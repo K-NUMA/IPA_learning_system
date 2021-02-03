@@ -1,1 +1,17 @@
 @CHARSET "UTF-8";
+
+h1{
+    text-align:center;
+}
+
+#header{
+    text-align:center;
+}
+
+#content{
+    text-align:center;
+}
+
+#footer{
+    text-align:center;
+}

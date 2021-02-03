@@ -12,6 +12,7 @@
         <div id="wrapper">
             <div id="header">
                     <h1>IPA 学習支援システム</h1>
+                    <a href="<c:url value="/amquestions/index" />">問題の管理(管理者用)</a>
             </div>
             <div id="content">
                 ${param.content}
