@@ -1,5 +1,6 @@
 package utils;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -14,7 +15,7 @@ import javax.servlet.http.Part;
  * Servlet implementation class QuestionImgUpload
  */
 @WebServlet("/qupload")
-@MultipartConfig(location="C:\\FE_Img",maxFileSize=1048576)
+@MultipartConfig(location="C:\\tmp",maxFileSize=1048576)
 public class QuestionImgUpload extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -30,10 +31,17 @@ public class QuestionImgUpload extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Part part = request.getPart("file");
-        String name = this.getFileName(part);
-        part.write(name);
-        response.sendRedirect(request.getContextPath() + "/amquestions/new");
+        try{
+            Part part = request.getPart("file");
+            String name = this.getFileName(part);
+
+            //リスナーで取得したプロパティ―(保存先のフルパス)を使用する
+            part.write((String)this.getServletContext().getAttribute("Filepath") + "/" + name);
+            response.sendRedirect(request.getContextPath() + "/amquestions/new");
+        }catch(FileNotFoundException e){
+            request.setAttribute("upload_error","ファイルを選択して下さい");
+            response.sendRedirect(request.getContextPath() + "/amquestions/new");
+        }
     }
 
     private String getFileName(Part part){

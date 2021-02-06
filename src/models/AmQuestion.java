@@ -14,6 +14,17 @@ import javax.persistence.Table;
     @NamedQuery(
             name="getQuestionsCount",
             query="SELECT COUNT(q) from AmQuestion as q"
+
+            ),
+    @NamedQuery(
+            name="getYearQuestion",
+            query="SELECT q FROM AmQuestion AS q WHERE "
+                    + "q.qs_year = :qs_year AND q.qs_season = :qs_season  ORDER BY q.qs_season DESC"
+            ),
+    @NamedQuery(
+            name="getUploadedQuestion",
+            query="SELECT COUNT(q) FROM AmQuestion As q WHERE "
+                  + "q.qs_year = :qs_year AND q.qs_season = :qs_season AND q.qs_number = :qs_number"
             )
 })
 @Entity
