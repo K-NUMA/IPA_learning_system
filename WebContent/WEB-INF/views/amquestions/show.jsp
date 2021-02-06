@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/WEB-INF/views/layout/app.jsp">
+    <c:param name="pagename">
+        <h1>試験問題の詳細画面</h1>
+    </c:param>
     <c:param name="content">
         <c:choose>
             <c:when test="${amquestion != null}">

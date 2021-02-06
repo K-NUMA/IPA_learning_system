@@ -12,11 +12,14 @@
         <div id="wrapper">
             <div id="header">
                     <h1>IPA 学習支援システム</h1>
-                    <a href="<c:url value="/amquestions/index" />">問題の管理(管理者用)</a>
+                    <div id="pagename">
+                        ${param.pagename}
+                    </div>
             </div>
             <div id="content">
                 ${param.content}
             </div>
+            <a href="<c:url value="/amquestions/index" />">問題の管理画面へ(管理者用)</a>
             <div id="footer">
                 by Keita Koinuma.
             </div>

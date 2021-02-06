@@ -31,16 +31,18 @@ public class QuestionImgUpload extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try{
+
             Part part = request.getPart("file");
             String name = this.getFileName(part);
 
+         try{
             //リスナーで取得したプロパティ―(保存先のフルパス)を使用する
             part.write((String)this.getServletContext().getAttribute("Filepath") + "/" + name);
-            response.sendRedirect(request.getContextPath() + "/amquestions/new");
+            request.getSession().setAttribute("flush","ファイルをアップロードしました");
+            response.sendRedirect(request.getContextPath() + "/amquestions/index");
         }catch(FileNotFoundException e){
-            request.setAttribute("upload_error","ファイルを選択して下さい");
-            response.sendRedirect(request.getContextPath() + "/amquestions/new");
+            request.getSession().setAttribute("flush","ファイルを選択して下さい");
+            response.sendRedirect(request.getContextPath() + "/amquestions/index");
         }
     }
 

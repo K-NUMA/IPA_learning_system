@@ -59,7 +59,7 @@ public class AmQuestionsCreateServlet extends HttpServlet {
             q.setContentImg(filename);
 
             //出題時期、問題番号、問題の画像ファイル名のエラーチェックを行う。
-            List<String> errors = AmQuestionsValidator.validate(q,filename);
+            List<String> errors = AmQuestionsValidator.validate(q,filename,(String)this.getServletContext().getAttribute("Filepath"));
 
             //バリデーションチェックでエラーが見つかった場合、フラッシュメッセージを表示する。
             if(errors.size() > 0){
@@ -76,6 +76,7 @@ public class AmQuestionsCreateServlet extends HttpServlet {
                 em.getTransaction().begin();
                 em.persist(q);
                 em.getTransaction().commit();
+                em.close();
                 request.getSession().setAttribute("flush","登録が完了しました。");
 
                 response.sendRedirect(request.getContextPath() + "/amquestions/index");

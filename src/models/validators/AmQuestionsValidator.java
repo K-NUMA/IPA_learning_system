@@ -10,7 +10,7 @@ import models.AmQuestion;
 import utils.DBUtil;
 
 public class AmQuestionsValidator {
-        public static List<String> validate(AmQuestion q,String filename){
+        public static List<String> validate(AmQuestion q,String filename,String filepath){
             List<String> errors = new ArrayList<String>();
 
             String year_error = validateYear(q.getQs_year());
@@ -31,7 +31,7 @@ public class AmQuestionsValidator {
                 errors.add(category_error);
             }
 
-            String content_error = validateContentCheck(q,filename);
+            String content_error = validateContentCheck(q,filename,filepath);
 
             if(!content_error.equals("")){
                 errors.add(content_error);
@@ -68,7 +68,7 @@ public class AmQuestionsValidator {
             return "";
         }
 
-        private static String validateContentCheck(AmQuestion q,String filename){
+        private static String validateContentCheck(AmQuestion q,String filename,String filepath){
             EntityManager em = DBUtil.createEntityManager();
 
             //登録する問題が既にテーブルへ登録されているかチェック
@@ -85,7 +85,7 @@ public class AmQuestionsValidator {
             }
 
             //登録する問題の画像がアップロードされているかチェック
-            File dir = new File("C:/FE_Img");
+            File dir = new File(filepath);
             File[] list = dir.listFiles();
 
             for(int i=0;i < list.length; i++){
@@ -95,6 +95,6 @@ public class AmQuestionsValidator {
             }
 
 
-            return "未登録の問題内容です";
+            return "問題内容がアップロードされていません";
         }
 }

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
+    <c:param name="pagename">
+        <h1>試験問題の管理画面(管理者用ページ)</h1>
+    </c:param>
     <c:param name="content">
         <c:if test="${flush != null}">
             <div id="flush_success">
@@ -8,7 +11,7 @@
             </div>
         </c:if>
 
-        <h2>基本情報技術者試験 問題一覧(管理者用ページ)</h2>
+        <h2>基本情報技術者試験 問題一覧</h2>
         <c:choose>
             <c:when test="${test_year==null || test_season==null || test_year == ''}">
                 <p>試験の年度と時期を選んでください</p>
@@ -40,6 +43,15 @@
             <button type="submit" >表示する</button>
         </form>
         問題登録数 <c:out value="${questions_count}" />件
+        <br /><br />
+
+            <!-- 画像で保存した問題内容をサーブレットでアップロード -->
+             <label for="qcontentimage">問題の画像をアップロード</label>
+             <form method="POST" enctype="multipart/form-data" action="<c:url value='/qupload' />" >
+                <input type="file" name="file"/><br />
+                <button type="submit" />アップロード</button><br />
+             </form><br />
+
         <p><a href="<c:url value="/amquestions/new" />">午前の問題を新規登録</a> </p>
     </c:param>
 </c:import>
