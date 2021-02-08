@@ -29,6 +29,13 @@ public class TopPageIndexServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/topPage/index.jsp");
+
+        //試験問題で使用しているセッションスコープが残っている場合削除
+        if(request.getSession().getAttribute("qlist") != null || request.getSession().getAttribute("ans") != null){
+            request.getSession().removeAttribute("qlist");
+            request.getSession().removeAttribute("ans");
+        }
+
         rd.forward(request, response);
     }
 

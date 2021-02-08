@@ -22,6 +22,7 @@
         }
         </script>
 
-        <p><a href="<c:url value='/amquestions/index'/>">一覧に戻る</a></p>
+        <br />
+        <a href="<c:url value="/amquestions/index" />">問題の管理画面へ(管理者用)</a>
     </c:param>
 </c:import>

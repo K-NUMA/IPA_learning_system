@@ -1,15 +1,18 @@
 @CHARSET "UTF-8";
 
-h1{
-
+main > .container {
+  padding: 60px 15px 0;
 }
 
-#header{
+.footer {
+  background-color: #f5f5f5;
 }
 
-#content{
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
-#footer{
-    text-align:center;
+code {
+  font-size: 80%;
 }

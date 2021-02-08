@@ -2,16 +2,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
     <c:param name="pagename">
-        <h1>試験問題の管理画面(管理者用ページ)</h1>
+        <h1 class=" navbar-brand">基本情報技術者試験 問題の管理画面(管理者用ページ)</h1>
     </c:param>
     <c:param name="content">
+
+        <h2 >問題一覧</h2>
+
         <c:if test="${flush != null}">
             <div id="flush_success">
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
 
-        <h2>基本情報技術者試験 問題一覧</h2>
         <c:choose>
             <c:when test="${test_year==null || test_season==null || test_year == ''}">
                 <p>試験の年度と時期を選んでください</p>
@@ -53,5 +55,6 @@
              </form><br />
 
         <p><a href="<c:url value="/amquestions/new" />">午前の問題を新規登録</a> </p>
+        <p><a href="<c:url value='/' /> ">トップページへ戻る</a></p>
     </c:param>
 </c:import>

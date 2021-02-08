@@ -1,6 +1,5 @@
 package utils;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -35,12 +34,12 @@ public class QuestionImgUpload extends HttpServlet {
             Part part = request.getPart("file");
             String name = this.getFileName(part);
 
-         try{
+         if(name != null && !name.equals("")){
             //リスナーで取得したプロパティ―(保存先のフルパス)を使用する
             part.write((String)this.getServletContext().getAttribute("Filepath") + "/" + name);
             request.getSession().setAttribute("flush","ファイルをアップロードしました");
             response.sendRedirect(request.getContextPath() + "/amquestions/index");
-        }catch(FileNotFoundException e){
+        }else{
             request.getSession().setAttribute("flush","ファイルを選択して下さい");
             response.sendRedirect(request.getContextPath() + "/amquestions/index");
         }

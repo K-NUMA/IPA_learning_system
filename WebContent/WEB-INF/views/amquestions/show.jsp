@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="pagename">
-        <h1>試験問題の詳細画面</h1>
+        <h1 class=" navbar-brand">基本情報技術者試験 問題の詳細画面</h1>
     </c:param>
     <c:param name="content">
         <c:choose>
@@ -24,6 +24,6 @@
             </c:otherwise>
         </c:choose>
 
-        <p><a href="<c:url value='/amquestions/index?select_year=${amquestion.qs_year}&select_season=${amquestion.qs_season}' /> ">一覧に戻る</a></p>
+        <p><a href="<c:url value='/amquestions/index?select_year=${amquestion.qs_year}&select_season=${amquestion.qs_season}' /> ">問題の一覧に戻る</a></p>
     </c:param>
 </c:import>
