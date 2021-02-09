@@ -41,25 +41,48 @@
                 </c:choose>
 
                 <p>問題一覧</p>
+                 <c:set var="scoringFlg" value="true" />
                  <c:forEach var="amquestion" items="${qlist}" varStatus="status">
                     <a href="<c:url value='/amquestions/test/testquestion?select_year=${amquestion.qs_year}
                     &select_season=${amquestion.qs_season}&qnumber=${amquestion.qs_number}' />">問<c:out
                             value="${amquestion.qs_number}" />
-                    </a>&nbsp;
+                    </a>:
                     <c:out value="${ans[status.index]}" />&nbsp;
                     <c:if test="${status.count % 20 == 0}">
                         <br />
                     </c:if>
+                    <c:if test="${ans[status.index] == null}">
+                        <c:set var="scoringFlg" value="false" />
+                    </c:if>
                 </c:forEach>
 
+                    <c:if test="${scoringFlg == 'true'}">
+                        <form method="GET" action="<c:url value='/amquestions/test/testscoring' />">
+                            <button type="submit" onClick="return confirmMessage('採点を行いますか？')">
+                            解答結果を採点する</button>
+                        </form>
+                    </c:if>
+
+                <!-- 誤ってクリックして戻らないように、トップページへ戻るかどうか確認する -->
+                <p><a href="<c:url value='/' /> " onClick="return confirmMessage('解答中ですがトップページに戻りますか？')" >トップページへ戻る</a></p>
             </c:when>
             <c:otherwise>
                 <h2>ご指定の問題は見つかりませんでした。</h2>
                 <p>試験の年度と時期をもう一度選んでください</p>
+                <p><a href="<c:url value='/' /> " " >トップページへ戻る</a></p>
             </c:otherwise>
         </c:choose>
         <br />
 
-        <p><a href="<c:url value='/' /> ">トップページへ戻る</a></p>
+
+        <script>
+        function confirmMessage(message){
+            if(window.confirm(message)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        </script>
     </c:param>
 </c:import>

@@ -2,16 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../../layout/app.jsp">
     <c:param name="pagename">
-        <h1 class=" navbar-brand">FE試験問題</h1>
+        <c:if test="${qselected != null}">
+            <h1 class=" navbar-brand"><c:out value="${qselected.qs_year}" />&nbsp;
+            <c:out value="${qselected.qs_season}" />&nbsp;FE試験問題&nbsp;問<c:out value="${qselected.qs_number}" /></h1>
+        </c:if>
     </c:param>
     <c:param name="content">
         <c:choose>
             <c:when test="${qselected != null}">
-                <p>問題の出題時期</p>
-                <div>
-                <div><p><c:out value="${qselected.qs_year}" />&nbsp;<c:out value="${qselected.qs_season}" />&nbsp;</p></div>
-                <div><p>問<c:out value="${qselected.qs_number}" /></p></div>
-                </div>
 
                 <p>問題の内容</p>
                 <div>
@@ -52,6 +50,13 @@
                         </c:choose>
                     </c:otherwise>
                 </c:choose>
+
+                 <br /><br />
+
+                    <form method="GET" action="<c:url value="/amquestions/test/askquestions" />">
+                        <input type="hidden" name="requestpage" value="top">
+                        <button type="submit">次の問題へ</button>
+                    </form>
 
             </c:when>
             <c:otherwise>

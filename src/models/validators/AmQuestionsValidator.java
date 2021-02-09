@@ -55,6 +55,7 @@ public class AmQuestionsValidator {
             if(number == null || number.equals("")){
                 return "問題番号を選択してください";
             }
+
             return "";
         }
 
