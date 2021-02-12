@@ -6,7 +6,7 @@
     </c:param>
     <c:param name="content">
 
-        <h2 >問題一覧</h2>
+        <h2 class="mt-5" >問題一覧</h2>
 
         <c:if test="${flush != null}">
             <div id="flush_success">

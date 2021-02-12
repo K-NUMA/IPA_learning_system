@@ -52,9 +52,9 @@ public class TestScoring extends HttpServlet {
         }
 
         if((int)scorePoint >= 60){
-            request.setAttribute("passjudge", "合格です！！");
+            request.setAttribute("passjudge", "1");
         }else{
-            request.setAttribute("passjudge", "不合格です");
+            request.setAttribute("passjudge", "0");
         }
 
         request.setAttribute("ansresult",ansResult);
