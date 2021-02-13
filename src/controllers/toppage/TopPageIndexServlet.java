@@ -36,6 +36,11 @@ public class TopPageIndexServlet extends HttpServlet {
             request.getSession().removeAttribute("ans");
         }
 
+        if(request.getSession().getAttribute("flush") != null){
+            request.setAttribute("flush", request.getSession().getAttribute("flush"));
+            request.getSession().removeAttribute("flush");
+        }
+
         rd.forward(request, response);
     }
 

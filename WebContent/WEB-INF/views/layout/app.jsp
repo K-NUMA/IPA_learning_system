@@ -22,7 +22,16 @@
                         ${param.pagename}
                     </div>
 
+                    <div class="d-flex justify-content-end text-white ">
+                    <c:if test="${sessionScope.login_user != null}">
+
+                            ログイン中のユーザー名:
+                        <c:out value="${sessionScope.login_user.user_name}" />&nbsp;
+                        <a href="<c:url value='/logout' />">ログアウト</a>
+                    </c:if>
+                    </div>
             </nav>
+
         </header>
 
         <main role="main">
