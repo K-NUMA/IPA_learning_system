@@ -25,6 +25,14 @@
             <input type="radio" name="select_season" value="秋期" id="autum">秋期
             <input type="hidden" name="qnumber" value="0">
             <br />
+            <label for="qyear">出題数を指定</label>
+            <select id="numbers" name="select_number">
+                <option value="20">20問
+                <option value="40">40問
+                <option value="60">60問
+                <option value="80">80問
+            </select>
+            <br />
             <button type="submit">試験問題を解く</button>
             <br />
 

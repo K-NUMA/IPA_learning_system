@@ -54,30 +54,34 @@
 
                     <div class="d-flex flex-row bd-highlight" >
                     <!-- 1列目 -->
-                    <c:forEach var="i" begin="0" end="4" step="1">
+                    <c:forEach var="i" begin="0" end="3" step="1">
                      <div class="d-flex flex-column bd-highlight" >
-                    <c:forEach var="j" begin="0" end="1" step="1">
+                    <c:forEach var="j" begin="0" end="19" step="1">
 
                           <div class="d-flex flex-row bd-highlight" >
-                                <a href="<c:url value='/amquestions/test/testquestion?select_year=${qlist[j + 2*i].qs_year}
-                            &select_season=${qlist[j+2*i].qs_season}&qnumber=${qlist[j+2*i].qs_number}' />"
-                            class="border border-primary rounded-circle">問<c:out
-                                value="${qlist[j+2*i].qs_number}" /></a>:
+                                <c:if test="${j+i+i*19 < qnumbers }">
+                                    <a href="<c:url value='/amquestions/test/testquestion?select_year=${qlist[j+i + i*19].qs_year}
+                                    &select_season=${qlist[j+i+i*19].qs_season}&qnumber=${qlist[j+i+i*19].qs_number}' />"
+                                    class="border border-primary rounded-circle">問<c:out
+                                    value="${qlist[j+i+i*19].qs_number}" /></a>:
                                 <c:choose>
-                                    <c:when test="${ans[j+2*i] == null}">
+                                    <c:when test="${ans[j+i+i*19] == null}">
                                         <c:out value="　" />
                                     </c:when>
                                     <c:otherwise>
-                                        <c:out value="${ans[j+2*i]}" />&nbsp;
+                                        <c:out value="${ans[j+i+i*19]}" />&nbsp;
                                     </c:otherwise>
                                 </c:choose>
 
+                                <c:if test="${ans[j+i+i*19] == null}">
+                                    <c:set var="scoringFlg" value="false" />
+                                </c:if>
+
+                                </c:if>
                           </div>
 
 
-                        <c:if test="${ans[j+2*i] == null}">
-                            <c:set var="scoringFlg" value="false" />
-                        </c:if>
+
                         </c:forEach>
                         </div>
                     </c:forEach>

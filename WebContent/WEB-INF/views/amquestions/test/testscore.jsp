@@ -47,13 +47,13 @@
                             <!-- 問題の解答をア～エの記号で表示 -->
                             <c:choose>
                                 <c:when test="${qlist[status.index].answer == '1'}">
-                                    <td><c:out value="ア" /></td>>
+                                    <td><c:out value="ア" /></td>
                                 </c:when>
                                 <c:when test="${qlist[status.index].answer == '2'}">
-                                    <td><c:out value="イ" /></td>>
+                                    <td><c:out value="イ" /></td>
                                 </c:when>
                                 <c:when test="${qlist[status.index].answer == '3'}">
-                                    <td><c:out value="ウ" /></td>>
+                                    <td><c:out value="ウ" /></td>
                                 </c:when>
                                 <c:otherwise>
                                     <td><c:out value="エ" /></td>
@@ -77,13 +77,13 @@
                             <!-- 問題の解答をア～エの記号で表示 -->
                             <c:choose>
                                 <c:when test="${qlist[status.index].answer == '1'}">
-                                    <td><c:out value="ア" /></td>>
+                                    <td><c:out value="ア" /></td>
                                 </c:when>
                                 <c:when test="${qlist[status.index].answer == '2'}">
-                                    <td><c:out value="イ" /></td>>
+                                    <td><c:out value="イ" /></td>
                                 </c:when>
                                 <c:when test="${qlist[status.index].answer == '3'}">
-                                    <td><c:out value="ウ" /></td>>
+                                    <td><c:out value="ウ" /></td>
                                 </c:when>
                                 <c:otherwise>
                                     <td><c:out value="エ" /></td>
