@@ -1,4 +1,4 @@
-package controllers.amquestions;
+package controllers.amquestions.manager;
 
 import java.io.File;
 import java.io.IOException;

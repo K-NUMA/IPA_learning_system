@@ -64,7 +64,7 @@ public class LoginFilter implements Filter {
                 }
 
                 // ログインしていない状態で問題管理の機能へアクセス出来ないようにする
-                if(u == null && servlet_path.matches("/amquestions.*")){
+                if(u == null && servlet_path.matches("/amquestions.manager.*")){
                     ((HttpServletResponse)response).sendRedirect(context_path + "/");
                     return;
                 }
@@ -76,7 +76,7 @@ public class LoginFilter implements Filter {
                 }
 
                 // 問題管理の機能は管理者のみが閲覧できるようにする
-                if(servlet_path.matches("/amquestions.*") && u.getAdmin_flag() == 0){
+                if(servlet_path.matches("/amquestions.manager.*") && u.getAdmin_flag() == 0){
                     ((HttpServletResponse)response).sendRedirect(context_path + "/");
                     return;
                 }

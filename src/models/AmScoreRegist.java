@@ -14,12 +14,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Table(name="amscores")
-@NamedQueries(
+@NamedQueries({
         @NamedQuery(
                 name = "getUserAllScore",
                 query = "SELECT s FROM AmScoreRegist AS s WHERE s.user = :user"
-                )
+        ),
+        @NamedQuery(
+                name = "getUserMostRecentScore",
+                query = "SELECT MAX(s.id) FROM AmScoreRegist AS s WHERE s.user = :user"
         )
+})
 @Entity
 public class AmScoreRegist {
     @Id
@@ -92,6 +96,14 @@ public class AmScoreRegist {
 
     public void setAnstime(Date anstime) {
         this.anstime = anstime;
+    }
+
+    public Integer getAnscount() {
+        return anscount;
+    }
+
+    public void setAnscount(Integer anscount) {
+        this.anscount = anscount;
     }
 
 }

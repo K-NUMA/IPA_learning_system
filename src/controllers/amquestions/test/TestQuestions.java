@@ -56,9 +56,9 @@ public class TestQuestions extends HttpServlet {
             //指定した出題数を
             Integer test_numbers = Integer.parseInt(request.getParameter("select_number"));
 
-            //登録されている問題数が20以上80以下かつ指定した問題数より多い場合。
+            //登録されている問題数が指定した出題数より多い場合かつ。出題数が80問でない場合、
             //指定した問題数になるまでランダムに問題を除外(残った問題で出題)
-            if(qlist.size() >= 20 && qlist.size() < TESTMAXNUMBER && qlist.size() > test_numbers){
+            if(test_numbers != TESTMAXNUMBER && qlist.size() > test_numbers){
                 int i=0;
                 while(qlist.size() > test_numbers){
                     i = (int)Math.random() * qlist.size();

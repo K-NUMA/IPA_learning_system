@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../../layout/app.jsp">
     <c:param name="pagename">
-            <c:if test="${qlist[qnum] != null}">
-              <h1 class=" navbar-brand"><c:out value="${qlist[qnum].qs_year}" />&nbsp;<c:out value="${qlist[qnum].qs_season}" />&nbsp;
+            <c:if test="${qlist != null}">
+              <h1 class=" navbar-brand"><c:out value="${qlist[0].qs_year}" />&nbsp;<c:out value="${qlist[0].qs_season}" />&nbsp;
               FE試験問題&nbsp;解答結果</h1>
             </c:if>
     </c:param>
@@ -23,6 +23,10 @@
                     </div>
                 </c:otherwise>
             </c:choose>
+        <p>問題の分野毎の正答率</p>
+        <p>基礎理論:<c:out value="${anscategory[0]}" /></p>
+        <p>コンピュータシステム:<c:out value="${anscategory[1]}" /></p>
+        <h2>全<c:out value="${qcounts}" />問</h2>
         <table class="table table-sm table-bordered p-1">
             <tbody class="text-white">
                 <thead>
@@ -101,10 +105,17 @@
         </table>
 
         <div class="d-flex flex-row pt-2 mb-2">
-           <a href="<c:url value="/amquestions/test/registscore" />" onClick="return confirmResistration('解答結果を送信しますか？')"
-            class="btn btn-primary">
-            解答結果を送信する
-            </a>
+            <form method="POST" action="<c:url value="../../amquestions/scoreregist/registscore" />">
+                <input type="hidden" name="scorepoint" value="${scorepoint}">
+                <input type="hidden" name="qcounts" value="${qcounts}">
+                <input type="hidden" name="qs_year" value="${qlist[0].qs_year}">
+                <input type="hidden" name="qs_season" value="${qlist[0].qs_season}">
+                <input type="hidden" name="_token" value="${_token}">
+                <button type="submit" onClick="return confirmResistration('解答結果を送信しますか？')"
+                class="btn btn-primary">
+                解答結果を送信する
+                </button>
+            </form>
             &nbsp;
            <a href="<c:url value="/" />" onClick="return confirmResistration('解答結果を送信せずに戻りますか？')"
            class="btn btn-warning">
