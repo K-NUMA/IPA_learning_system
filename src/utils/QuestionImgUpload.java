@@ -35,13 +35,22 @@ public class QuestionImgUpload extends HttpServlet {
             String name = this.getFileName(part);
 
          if(name != null && !name.equals("")){
+             //ファイル名から保存先のフォルダ―名を抽出(例:FE_年号(平成、令和など)〇〇年_春期 or 秋期)
+             String folder_name;
+             if(name.charAt(name.length()-7)=='問'){//抽出するフォルダ―名の最後の文字が'問'の場合、
+                                                    //もう一文字ずらして抽出する(フォルダ―名の最後に'_'が付くため)
+                 folder_name = name.substring(0, name.length()-8);
+             }else{
+                 folder_name = name.substring(0, name.length()-7);
+             }
+
             //リスナーで取得したプロパティ―(保存先のフルパス)を使用する
-            part.write((String)this.getServletContext().getAttribute("Filepath") + "/" + name);
+            part.write((String)this.getServletContext().getAttribute("Filepath") + "/" + folder_name + "/" + name);
             request.getSession().setAttribute("flush","ファイルをアップロードしました");
-            response.sendRedirect(request.getContextPath() + "/amquestions/index");
+            response.sendRedirect(request.getContextPath() + "/amquestions/manager/index");
         }else{
             request.getSession().setAttribute("flush","ファイルを選択して下さい");
-            response.sendRedirect(request.getContextPath() + "/amquestions/index");
+            response.sendRedirect(request.getContextPath() + "/amquestions/manager/index");
         }
     }
 

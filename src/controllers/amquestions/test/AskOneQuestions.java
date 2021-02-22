@@ -55,8 +55,10 @@ public class AskOneQuestions extends HttpServlet {
         }
 
         if(q != null){
+            //ファイル名から保存先のフォルダ―名を定義(例:FE_年号(平成、令和など)〇〇年_春期 or 秋期)
+            String folder_name = "FE_" + q.getQs_year() + "_" + q.getQs_season();
             request.setAttribute("qselected", q);
-            request.setAttribute("qcontent", "/FE_img/" + q.getContentImg());
+            request.setAttribute("qcontent", "/FE_img/" + folder_name + "/" + q.getContentImg());
         }
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/amquestions/test/askquestion.jsp");

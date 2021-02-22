@@ -120,6 +120,7 @@ public class TestScoring extends HttpServlet {
         request.getSession().removeAttribute("qlist");
         request.getSession().removeAttribute("ans");
 
+
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/amquestions/test/testscore.jsp");
         rd.forward(request, response);
 

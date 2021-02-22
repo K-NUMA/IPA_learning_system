@@ -34,6 +34,8 @@ public class TopPageIndexServlet extends HttpServlet {
         if(request.getSession().getAttribute("qlist") != null || request.getSession().getAttribute("ans") != null){
             request.getSession().removeAttribute("qlist");
             request.getSession().removeAttribute("ans");
+            //フォルダ―名のセッションスコープも削除
+            request.getSession().removeAttribute("folder_name");
         }
 
         if(request.getSession().getAttribute("flush") != null){

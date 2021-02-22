@@ -38,8 +38,10 @@ public class AmQuestionsShowServlet extends HttpServlet {
 
         em.close();
         if(q != null){
+            //ファイル名から保存先のフォルダ―名を抽出(例:FE_年号(平成、令和など)〇〇年_春期 or 秋期)
+            String folder_name = "FE_" + q.getQs_year() + "_" + q.getQs_season();
             request.setAttribute("amquestion", q);
-            request.setAttribute("qcontent", "/FE_img/" + q.getContentImg());
+            request.setAttribute("qcontent", "/FE_img/" + folder_name + "/" + q.getContentImg());
         }
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/amquestions/show.jsp");
         rd.forward(request, response);

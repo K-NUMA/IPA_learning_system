@@ -53,7 +53,7 @@ public class TestQuestions extends HttpServlet {
                     .setParameter("qs_season", test_season)
                     .getResultList();
 
-            //指定した出題数を
+            //指定した出題数を変数へ格納
             Integer test_numbers = Integer.parseInt(request.getParameter("select_number"));
 
             //登録されている問題数が指定した出題数より多い場合かつ。出題数が80問でない場合、
@@ -75,6 +75,11 @@ public class TestQuestions extends HttpServlet {
             request.getSession().setAttribute("qlist", qlist);
             request.getSession().setAttribute("ans", ans);
             request.getSession().setAttribute("qnumbers", qlist.size());
+
+            //ファイル名から保存先のフォルダ―名を定義(例:FE_年号(平成、令和など)〇〇年_春期 or 秋期)
+            //試験中のみ定義したフォルダ名をセッションスコープへ格納
+            String folder_name = "FE_" + test_year + "_" + test_season;
+            request.getSession().setAttribute("folder_name", folder_name);
         }
 
         try{

@@ -13,7 +13,8 @@
         <p><h2 class="d-inline-flex p-2 bd-highlight bg-primary text-white rounded mt-5">出題形式一覧</h2><p>
 
         <div class="d-flex text-white rounded bg-success pl-1 pr-1 mb-1 w-25">一問一答形式</div>
-        <form method="GET" action="<c:url value="/amquestions/test/askquestions?requestpage=top" />">
+        <form method="GET" action="<c:url value="/amquestions/test/askquestions" />">
+            <input type="hidden" name="requestpage" value="top">
             <button type="submit">問題を解く</button>
         </form>
         <br />
