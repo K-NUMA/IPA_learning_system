@@ -25,7 +25,7 @@
                     試験
                 </p>
                 <c:forEach var="amquestion" items="${amquestions}" varStatus="status">
-                    <a href="<c:url value='/amquestions/show?id=${amquestion.id}' />">問<c:out
+                    <a href="<c:url value='/amquestions/manager/show?id=${amquestion.id}' />">問<c:out
                             value="${amquestion.qs_number}" />
                     </a>&nbsp;
                     <c:if test="${status.count % 10 == 0}">
@@ -35,7 +35,7 @@
             </c:otherwise>
         </c:choose>
         <br /><br />
-        <form method="GET" action="<c:url value='/amquestions/index' />">
+        <form method="GET" action="<c:url value='/amquestions/manager/index' />">
             <label for="qyear">出題時期</label><br />
             <input type="text" name="select_year" autocomplete="on" list="years">
             <c:import url="yearlist.jsp" />
@@ -54,7 +54,7 @@
                 <button type="submit" />アップロード</button><br />
              </form><br />
 
-        <p><a href="<c:url value="/amquestions/new" />">午前の問題を新規登録</a> </p>
+        <p><a href="<c:url value="/amquestions/manager/new" />">午前の問題を新規登録</a> </p>
         <p><a href="<c:url value='/' /> ">トップページへ戻る</a></p>
     </c:param>
 </c:import>

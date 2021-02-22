@@ -10,16 +10,22 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2 class="mt-5">出題形式一覧</h2>
+        <p><h2 class="d-inline-flex p-2 bd-highlight bg-primary text-white rounded mt-5">出題形式一覧</h2><p>
 
-        <label for="askquestion">一問一答形式</label>
-        <p><a href="<c:url value="/amquestions/test/askquestions?requestpage=top" />">問題を解く</a></p>
+        <div class="d-flex text-white rounded bg-success pl-1 pr-1 mb-1 w-25">一問一答形式</div>
+        <form method="GET" action="<c:url value="/amquestions/test/askquestions?requestpage=top" />">
+            <button type="submit">問題を解く</button>
+        </form>
+        <br />
 
-        <label for="askquestion">試験形式(ログイン必須です)</label>
+        <div class="d-flex text-white rounded bg-success pl-1 pr-5 mb-1 w-25">試験形式(ログイン必須です)</div>
+        <div class="border-5 border-success w-25 my-box pb-2 pl-2 pr-2">
         <form method="GET" action="<c:url value="/amquestions/test/testquestion" />">
-            <label for="qyear">出題時期</label>
-            <input type="text" name="select_year" autocomplete="on" list="years">
+            <div class="form-group pt-1">
+                    <label for="qyear">出題時期</label>
+                    <input type="text" name="select_year" autocomplete="on" list="years" class="form-control">
             <c:import url="../amquestions/yearlist.jsp" />
+            </div>
 
             <input type="radio" name="select_season" value="春期" checked="checked">春期
             <input type="radio" name="select_season" value="秋期" id="autum">秋期
@@ -37,16 +43,18 @@
             <br />
 
         </form>
+        </div>
         <br />
 
             <c:if test="${sessionScope.login_user == null}">
-                <p><a href="<c:url value='/login' /> " class="btn btn-primary">ログインする</a></p>
+                <p>アカウントをお持ちでない方は</p>
+                <p><a href="<c:url value='/user/new' /> " class="btn btn-primary">ユーザーの新規登録</a></p>
             </c:if>
         <br />
 
         <c:if test="${sessionScope.login_user != null && login_user.admin_flag == 1}">
-            <a href="<c:url value="/amquestions/index" />">問題の管理画面へ(管理者用)</a><br />
-            <a href="<c:url value="/user/index" />">登録ユーザーの管理画面へ(管理者用)</a>
+            <a class="d-inline-flex text-white rounded bg-warning pl-1 pr-1 mb-1" href="<c:url value="/amquestions/manager/index" />">問題の管理画面へ(管理者用)</a><br />
+            <a class="d-inline-flex text-white rounded bg-warning pl-1 pr-1 mb-1" href="<c:url value="/user/index" />">登録ユーザーの管理画面へ(管理者用)</a>
         </c:if>
     </c:param>
 </c:import>

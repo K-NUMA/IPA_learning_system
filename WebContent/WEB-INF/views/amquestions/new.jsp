@@ -6,7 +6,7 @@
     </c:param>
     <c:param name="content">
 
-        <form method="POST" action="<c:url value='/amquestions/create' />" id="qupload">
+        <form method="POST" action="<c:url value='/amquestions/manager/create' />" id="qupload">
             <c:import url="_forms.jsp" />
         </form>
 
@@ -23,6 +23,6 @@
         </script>
 
         <br />
-        <a href="<c:url value="/amquestions/index" />">問題の管理画面へ(管理者用)</a>
+        <a href="<c:url value="/amquestions/manager/index" />">問題の管理画面へ(管理者用)</a>
     </c:param>
 </c:import>

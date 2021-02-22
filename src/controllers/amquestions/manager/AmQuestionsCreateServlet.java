@@ -18,7 +18,7 @@ import utils.DBUtil;
 /**
  * Servlet implementation class AmQuestionsCreateServlet
  */
-@WebServlet("/amquestions/create")
+@WebServlet("/amquestions/manager/create")
 public class AmQuestionsCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -79,7 +79,7 @@ public class AmQuestionsCreateServlet extends HttpServlet {
                 em.close();
                 request.getSession().setAttribute("flush","登録が完了しました。");
 
-                response.sendRedirect(request.getContextPath() + "/amquestions/index");
+                response.sendRedirect(request.getContextPath() + "/amquestions/manager/index");
 
             }
         }

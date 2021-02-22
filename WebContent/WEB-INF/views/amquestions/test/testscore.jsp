@@ -24,8 +24,17 @@
                 </c:otherwise>
             </c:choose>
         <p>問題の分野毎の正答率</p>
-        <p>基礎理論:<c:out value="${anscategory[0]}" /></p>
-        <p>コンピュータシステム:<c:out value="${anscategory[1]}" /></p>
+        <c:forEach var="categorys" items="${qcategorys}" varStatus="status">
+            <c:choose>
+                <c:when test="${anscategory[status.index] >= 0.0}">
+                    <c:out value="${categorys}" />:<c:out value="${anscategory[status.index]}" />&nbsp;
+                </c:when>
+                <c:otherwise>
+                    <c:out value="${categorys}" />:出題されていません&nbsp;
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        <canvas id="myRaderChart"></canvas>
         <h2>全<c:out value="${qcounts}" />問</h2>
         <table class="table table-sm table-bordered p-1">
             <tbody class="text-white">
@@ -128,14 +137,44 @@
             <p><a href="<c:out value="/" />" >トップページへ戻る</a></p>
         </c:otherwise>
         </c:choose>
+
         <script>
-        function confirmResistration(message){
-            if(window.confirm(message)){
-                return true;
-            }else{
-                return false;
+        var ctx = document.getElementById("myRaderChart");
+        var myRadarChart = new Chart(ctx,
+                {
+        type: 'radar',
+        data: {
+            labels: [ "<c:out value="${qcategorys[0]}" />", "<c:out value="${qcategorys[1]}" />", "<c:out value="${qcategorys[2]}" />",
+                "<c:out value="${qcategorys[3]}" />","<c:out value="${qcategorys[4]}" />","<c:out value="${qcategorys[5]}" />",
+                "<c:out value="${qcategorys[6]}" />","<c:out value="${qcategorys[7]}" />","<c:out value="${qcategorys[8]}" />"],
+            datasets: [{
+                label: "<c:out value="${sessionScope.login_user.user_name}" />"+'さん',
+                data: [ "<c:out value="${graphAnsCategory[0]*100}" />", "<c:out value="${graphAnsCategory[1]*100}" />", "<c:out value="${graphAnsCategory[2]*100}" />",
+                    "<c:out value="${graphAnsCategory[3]*100}" />", "<c:out value="${graphAnsCategory[4]*100}" />","<c:out value="${graphAnsCategory[5]*100}" />",
+                    "<c:out value="${graphAnsCategory[6]*100}" />","<c:out value="${graphAnsCategory[7]*100}" />","<c:out value="${graphAnsCategory[8]*100}" />"],
+                backgroundColor: 'RGBA(225,95,150, 0.5)',
+                borderColor: 'RGBA(225,95,150, 1)',
+                borderWidth: 1,
+                pointBackgroundColor: 'RGB(46,106,177)'
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: '問題分野毎の正答率(グラフ表示)'
+            },
+            scale:{
+                ticks:{
+                    suggestedMin: 0,
+                    suggestedMax: 100,
+                    stepSize: 10,
+                    callback: function(value, index, values){
+                        return  value +  '%'
+                    }
+                }
             }
         }
-        </script>
+    });
+    </script>
     </c:param>
 </c:import>

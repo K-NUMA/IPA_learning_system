@@ -16,7 +16,7 @@ import utils.DBUtil;
 /**
  * Servlet implementation class AmQuestionsEdit
  */
-@WebServlet("/amquestions/edit")
+@WebServlet("/amquestions/manager/edit")
 public class AmQuestionsEdit extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

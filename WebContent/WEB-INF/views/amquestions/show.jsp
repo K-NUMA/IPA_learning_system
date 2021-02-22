@@ -17,13 +17,13 @@
                 <div>
                     <img src="<c:url value='${qcontent}' />" alt="not view">
                 </div>
-                <p><a href="<c:url value='/amquestions/edit?id=${amquestion.id}' />">この問題を編集する</a></p>
+                <p><a href="<c:url value='/amquestions/manager/edit?id=${amquestion.id}' />">この問題を編集する</a></p>
             </c:when>
             <c:otherwise>
                 <h2>ご指定の問題は見つかりませんでした。</h2>
             </c:otherwise>
         </c:choose>
 
-        <p><a href="<c:url value='/amquestions/index?select_year=${amquestion.qs_year}&select_season=${amquestion.qs_season}' /> ">問題の一覧に戻る</a></p>
+        <p><a href="<c:url value='/amquestions/manager/index?select_year=${amquestion.qs_year}&select_season=${amquestion.qs_season}' /> ">問題の一覧に戻る</a></p>
     </c:param>
 </c:import>

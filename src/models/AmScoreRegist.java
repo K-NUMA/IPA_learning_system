@@ -17,7 +17,11 @@ import javax.persistence.Table;
 @NamedQueries({
         @NamedQuery(
                 name = "getUserAllScore",
-                query = "SELECT s FROM AmScoreRegist AS s WHERE s.user = :user"
+                query = "SELECT s FROM AmScoreRegist AS s WHERE s.user = :user ORDER BY s.id DESC"
+        ),
+        @NamedQuery(
+                name = "getUserScoreCount",
+                query = "SELECT COUNT(s) FROM AmScoreRegist AS s WHERE s.user = :user"
         ),
         @NamedQuery(
                 name = "getUserMostRecentScore",

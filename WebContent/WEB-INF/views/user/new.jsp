@@ -6,10 +6,11 @@
     </c:param>
     <c:param name="content">
 
-
+        <div class="mt-5">
         <form method="POST" action="<c:url value='/user/create' />">
             <c:import url="_user_form.jsp" />
         </form>
+        </div>
 
         <p><a href="<c:url value='/user/index'/>">一覧に戻る</a></p>
     </c:param>

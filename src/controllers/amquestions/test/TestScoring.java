@@ -51,6 +51,8 @@ public class TestScoring extends HttpServlet {
         int[][] categoryNumAnsCnt = new int[2][QCATEGORY];
         //小数第3位まで丸めるための配列を定義
         BigDecimal[] ansCategoryDeci = new BigDecimal[QCATEGORY];
+        //採点結果の問題の種類ごとの正答率をグラフで表示するために配列を定義
+        BigDecimal[] graphAnsCategory = new BigDecimal[QCATEGORY];
 
         for(int i=0 ; i < 2;i++){
             for(int j=0 ; j < QCATEGORY;j++){
@@ -59,6 +61,11 @@ public class TestScoring extends HttpServlet {
         }
 
         double scorePoint = 0.0;
+
+        //viewで扱う問題分野名を格納した配列を定義
+        String[] categoryName = {"基礎理論","コンピュータシステム","技術要素","開発技術",
+                "プロジェクトマネジメント","サービスマネジメント","システム戦略"
+                ,"経営戦略","企業と法務"};
 
         //解答が正解か一問ずつチェック
         for(int i=0 ; i < questions.size(); i++){
@@ -79,12 +86,15 @@ public class TestScoring extends HttpServlet {
 
       //問題の種類ごとの正答率を小数第2位まで丸める(四捨五入)
         for(int i=0 ; i < QCATEGORY;i++){
-            //問題数が0出ない場合、正答率を計算
+            //問題数が0でない場合、正答率を計算
             if(categoryNumAnsCnt[1][i] != 0){
                 ansCategoryDeci[i] = new BigDecimal((double)categoryNumAnsCnt[0][i]/categoryNumAnsCnt[1][i]);
                 ansCategoryDeci[i] = ansCategoryDeci[i].setScale(2,RoundingMode.HALF_UP);
+                graphAnsCategory[i] = ansCategoryDeci[i];
             }else{
-                ansCategoryDeci[i] = BigDecimal.valueOf(0.00);
+                //問題数が0の場合、-1を代入
+                ansCategoryDeci[i] = BigDecimal.valueOf(-1.00);
+                graphAnsCategory[i] = BigDecimal.valueOf(0.00);
             }
         }
 
@@ -94,10 +104,12 @@ public class TestScoring extends HttpServlet {
             request.setAttribute("passjudge", "0");
         }
 
-        //採点結果と問題の出題数をリクエストスコープへ格納
+        //採点結果と問題の出題数と問題分野名、グラフ表示用配列をリクエストスコープへ格納
         request.setAttribute("ansresult",ansResult);
         request.setAttribute("scorepoint",(int)scorePoint);
         request.setAttribute("qcounts",questions.size());
+        request.setAttribute("qcategorys",categoryName);
+        request.setAttribute("graphAnsCategory",graphAnsCategory);
 
         //問題の種類ごとの点数はセッションスコープへ格納
         request.getSession().setAttribute("anscategory",ansCategoryDeci);

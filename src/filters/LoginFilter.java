@@ -57,8 +57,15 @@ public class LoginFilter implements Filter {
                     return;
                 }
 
-                // ログインしていない状態でユーザー管理の機能へアクセス出来ないようにする
-                if(u == null && servlet_path.matches("/user.*")){
+                // ログインしていない状態でユーザー管理の機能(index,show,edit,update)へアクセス出来ないようにする
+                if(u == null && (servlet_path.matches("/user/index") || servlet_path.matches("/user/edit")
+                        || servlet_path.matches("/user/show") || servlet_path.matches("/user/update"))){
+                    ((HttpServletResponse)response).sendRedirect(context_path + "/");
+                    return;
+                }
+
+                // ログインしている状態でユーザー作成を出来ないようにする(一般ユーザーのみ)
+                if(u != null && (servlet_path.matches("/user/new") && u.getAdmin_flag() == 0)){
                     ((HttpServletResponse)response).sendRedirect(context_path + "/");
                     return;
                 }
@@ -69,8 +76,10 @@ public class LoginFilter implements Filter {
                     return;
                 }
 
-                // ユーザー管理の機能は管理者のみが閲覧できるようにする
-                if(servlet_path.matches("/user.*") && u.getAdmin_flag() == 0){
+                // ユーザー管理の機能(index,show,edit,update)は管理者のみが閲覧できるようにする
+                if((servlet_path.matches("/user/index") || servlet_path.matches("/user/edit")
+                        || servlet_path.matches("/user/show") || servlet_path.matches("/user/update"))
+                        && u.getAdmin_flag() == 0){
                     ((HttpServletResponse)response).sendRedirect(context_path + "/");
                     return;
                 }

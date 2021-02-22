@@ -7,7 +7,7 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${amquestion != null}">
-                <form method="POST" action="<c:url value='/amquestions/update' />">
+                <form method="POST" action="<c:url value='/amquestions/manager/update' />">
                     <c:import url="_forms.jsp" />
                 </form>
 
@@ -23,8 +23,8 @@
                 <h2>お探しのデータは見つかりませんでした。</h2>
             </c:otherwise>
         </c:choose>
-        <p><a href="<c:url value='/amquestions/show?id=${amquestion.id}' /> ">問題の詳細に戻る</a></p>
-        <a href="<c:url value="/amquestions/index" />">問題の管理画面へ(管理者用)</a>
+        <p><a href="<c:url value='/amquestions/manager/show?id=${amquestion.id}' /> ">問題の詳細に戻る</a></p>
+        <a href="<c:url value="/amquestions/manager/index" />">問題の管理画面へ(管理者用)</a>
         <br />
     </c:param>
 </c:import>

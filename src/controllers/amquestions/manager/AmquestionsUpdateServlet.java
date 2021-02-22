@@ -19,7 +19,7 @@ import utils.DBUtil;
 /**
  * Servlet implementation class AmquestionsUpdateServlet
  */
-@WebServlet("/amquestions/update")
+@WebServlet("/amquestions/manager/update")
 public class AmquestionsUpdateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -88,7 +88,7 @@ public class AmquestionsUpdateServlet extends HttpServlet {
 
                     request.getSession().removeAttribute("question_id");
 
-                    response.sendRedirect(request.getContextPath() + "/amquestions/index");
+                    response.sendRedirect(request.getContextPath() + "/amquestions/manager/index");
 
                 }
             }

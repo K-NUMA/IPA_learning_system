@@ -52,7 +52,9 @@ public class UserCreateServlet extends HttpServlet {
                             )
                     );
 
-            u.setAdmin_flag(Integer.parseInt(request.getParameter("admin_flag")));
+            //アクセスした一般ユーザーがアカウントを作成出来るようにするため、
+            //管理者フラグは0(一般ユーザー)にする。(管理者ユーザーにしたい場合は、MySQLで更新する)
+            u.setAdmin_flag(0);
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             u.setCreated_at(currentTime);
