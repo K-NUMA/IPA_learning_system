@@ -7,23 +7,36 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${amquestion != null}">
-                <p>問題の出題時期</p>
+                <div class="d-inline-flex text-white pl-1 pr-1 rounded bg-primary mt-5">問題の出題時期</div><br />
                 <div>
-                <div><p><c:out value="${amquestion.qs_year}" />&nbsp;<c:out value="${amquestion.qs_season}" />&nbsp;</p></div>
-                <div><p>問<c:out value="${amquestion.qs_number}" /></p></div>
+                <div class="pl-2"><c:out value="${amquestion.qs_year}" />&nbsp;<c:out value="${amquestion.qs_season}" />&nbsp;</div>
+                <br />
+                <div class="d-inline-flex text-white pl-1 pr-1 rounded bg-primary">問題の番号</div><br />
+                <div class="pl-2">問<c:out value="${amquestion.qs_number}" /></div>
                 </div>
+                <br />
 
-                <p>問題の内容</p>
-                <div>
-                    <img src="<c:url value='${qcontent}' />" alt="not view">
-                </div>
-                <p><a href="<c:url value='/amquestions/manager/edit?id=${amquestion.id}' />">この問題を編集する</a></p>
+                <table>
+                     <thead class="d-flex text-white pl-1 pr-1 mb-n1 rounded bg-primary">
+                        <tr>
+                            <th >問題の内容</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                        <td>
+                            <img src="<c:url value='${qcontent}' />" alt="not view" class="border-5 border-dark">
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><a class="btn btn-warning btn-sm pl-1 pr-1" href="<c:url value='/amquestions/manager/edit?id=${amquestion.id}' />">この問題を編集する</a></p>
             </c:when>
             <c:otherwise>
                 <h2>ご指定の問題は見つかりませんでした。</h2>
             </c:otherwise>
         </c:choose>
 
-        <p><a href="<c:url value='/amquestions/manager/index?select_year=${amquestion.qs_year}&select_season=${amquestion.qs_season}' /> ">問題の一覧に戻る</a></p>
+        <p><a class="btn btn-primary btn-sm pl-1 pr-1" href="<c:url value='/amquestions/manager/index?select_year=${amquestion.qs_year}&select_season=${amquestion.qs_season}' /> ">問題の一覧に戻る</a></p>
     </c:param>
 </c:import>

@@ -12,7 +12,7 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2 class="mt-5">ログインしてください</h2>
+        <h2 class="d-inline-flex text-white bg-primary pt-1 pl-1 pb-1 pr-1 rounded mt-5">ログインしてください</h2>
         <form method="POST" action="<c:url value='/login' />">
             <label for="user_id">ユーザーID</label><br />
             <input type="text" name="user_id" value="${user_id}" />
@@ -23,7 +23,7 @@
             <br /><br />
 
             <input type="hidden" name="_token" value="${_token}" />
-            <button type="submit">ログイン</button>
+            <button  type="submit">ログイン</button>
          </form>
          <br /><br />
 

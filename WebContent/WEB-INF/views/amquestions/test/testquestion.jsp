@@ -48,12 +48,12 @@
                 </div>
 
                 <div class="d-flex flex-column bd-highlight mb-3 p-1 bg-dark text-white border-left" >
-                <div class="pt-2 pl-2 mb-2 bg-primary text-white"><p>問題一覧</p></div>
+                <div class="pt-2 pl-2 pr-2 mb-2 bg-primary text-white"><p>問題一覧</p></div>
                  <c:set var="scoringFlg" value="true" />
 
 
                     <div class="d-flex flex-row bd-highlight" >
-                    <!-- 1列目 -->
+                    <!-- 20×4で問題の一覧を表示 -->
                     <c:forEach var="i" begin="0" end="3" step="1">
                      <div class="d-flex flex-column bd-highlight" >
                     <c:forEach var="j" begin="0" end="19" step="1">
@@ -94,9 +94,6 @@
                         </form>
                     </c:if>
 
-                <!-- 誤ってクリックして戻らないように、トップページへ戻るかどうか確認する -->
-                <p><a href="<c:url value='/' /> " onClick="return confirmMessage('解答中ですがトップページに戻りますか？')" >トップページへ戻る</a></p>
-
             </div>
             </div>
             </c:when>
@@ -104,7 +101,6 @@
             <c:otherwise>
                 <h2>ご指定の問題は見つかりませんでした。</h2>
                 <p>試験の年度と時期をもう一度選んでください</p>
-                <p><a href="<c:url value='/' /> " class="btn btn-primary">トップページへ戻る</a></p>
             </c:otherwise>
         </c:choose>
         <br />
@@ -119,5 +115,8 @@
             }
         }
         </script>
+
+        <!-- 誤ってクリックして戻らないように、トップページへ戻るかどうか確認する -->
+        <p><a href="<c:url value='/' /> " class="btn btn-primary" onClick="return confirmMessage('解答中ですがトップページに戻りますか？')" >トップページへ戻る</a></p>
     </c:param>
 </c:import>

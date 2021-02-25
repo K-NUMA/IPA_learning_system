@@ -36,24 +36,34 @@
             </tbody>
         </table>
 
-        <div id="pagenation">
-            (全 ${test_count} 件) <br />
+        <nav aria-label="test result list page nation">
+            <div class="d-inline-flex bg-white text-primary border border-primary rounded mb-1 pl-1 pr-1">
+                (全 ${test_count} 件)
+            </div><br />
+            <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+                </a>
+            </li>
             <c:forEach var="i" begin="1" end="${((test_count - 1) / 15) + 1}" step="1">
-                <c:choose>
-                    <c:when test="${i == page}">
-                        <c:out value="${i}" />&nbsp;
-                    </c:when>
-                    <c:otherwise>
-                        <a href="<c:url value='//mypage/felog?page=${i}' />"><c:out value="${i}" /></a>&nbsp;
-                    </c:otherwise>
-                </c:choose>
+                        <li class="page-item"> <a class="page-link" href="<c:url value='/user/index?page=${i}' />">
+                    <c:out value="${i}" /></a></li>
             </c:forEach>
-        </div>
+            <li class="page-item">
+                 <a class="page-link" href="#" aria-label="Next">
+                 <span aria-hidden="true">&raquo;</span>
+                 <span class="sr-only">Next</span>
+                 </a>
+            </li>
+            </ul>
+        </nav>
       </c:when>
       <c:otherwise>
         <h1 class="mt-5">自習データがありませんでした</h1>
       </c:otherwise>
     </c:choose>
-        <p><a href="<c:url value='/mypage/top' />">マイページのトップへ戻る</a></p>
+        <p><a href="<c:url value='/mypage/top' />" class="btn btn-primary btn-sm">マイページのトップへ戻る</a></p>
     </c:param>
 </c:import>

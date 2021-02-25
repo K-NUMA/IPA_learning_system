@@ -5,22 +5,21 @@
         <h1 class=" navbar-brand">基本情報技術者試験 午前問題 トップページ</h1>
     </c:param>
     <c:param name="content">
-        <c:if test="${flush != null}">
-            <div id="flush_success">
-                <c:out value="${flush}"></c:out>
-            </div>
-        </c:if>
         <p><h2 class="d-inline-flex p-2 bd-highlight bg-primary text-white rounded mt-5">出題形式一覧</h2><p>
 
-        <div class="d-flex text-white rounded bg-success pl-1 pr-1 mb-1 w-25">一問一答形式</div>
+        <div class="d-flex text-white bg-success pl-1 pr-1 w-25">一問一答形式</div>
+        <div class="d-flex text-black bg-white border-5 border-success w-25 my-box pl-2 pr-2">
         <form method="GET" action="<c:url value="/amquestions/test/askquestions" />">
             <input type="hidden" name="requestpage" value="top">
+            <div class="pt-1 pb-1">
             <button type="submit">問題を解く</button>
+            </div>
         </form>
+        </div>
         <br />
 
-        <div class="d-flex text-white rounded bg-success pl-1 pr-5 mb-1 w-25">試験形式(ログイン必須です)</div>
-        <div class="border-5 border-success w-25 my-box pb-2 pl-2 pr-2">
+        <div class="d-flex text-white bg-success pl-1 pr-1 w-25">試験形式(ログイン必須です)</div>
+        <div class="d-flex text-black bg-white border-5 border-success w-25 my-box pb-2 pl-2 pr-2">
         <form method="GET" action="<c:url value="/amquestions/test/testquestion" />">
             <div class="form-group pt-1">
                     <label for="qyear">出題時期</label>
@@ -54,8 +53,8 @@
         <br />
 
         <c:if test="${sessionScope.login_user != null && login_user.admin_flag == 1}">
-            <a class="d-inline-flex text-white rounded bg-warning pl-1 pr-1 mb-1" href="<c:url value="/amquestions/manager/index" />">問題の管理画面へ(管理者用)</a><br />
-            <a class="d-inline-flex text-white rounded bg-warning pl-1 pr-1 mb-1" href="<c:url value="/user/index" />">登録ユーザーの管理画面へ(管理者用)</a>
+            <a class="btn btn-warning pl-1 pr-1" href="<c:url value="/amquestions/manager/index" />">問題の管理画面へ(管理者用)</a>&nbsp;
+            <a class="btn btn-warning pl-1 pr-1" href="<c:url value="/user/index" />">登録ユーザーの管理画面へ(管理者用)</a>
         </c:if>
     </c:param>
 </c:import>

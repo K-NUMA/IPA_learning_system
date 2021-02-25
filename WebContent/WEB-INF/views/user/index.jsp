@@ -10,13 +10,15 @@
                 <c:out value="${flush}"/>
             </div>
         </c:if>
-        <table id="user_list" class="mt-5">
+        <table id="user_list" class="table mt-5">
             <tbody >
+                <thead class="thead-dark">
                 <tr>
                     <th>ユーザーID</th>
                     <th>ユーザー名</th>
                     <th>操作</th>
                 </tr>
+                </thead>
                 <c:forEach var = "users" items="${users}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${users.user_id}" /></td>
@@ -36,20 +38,30 @@
             </tbody>
         </table>
 
-        <div id="pagenation">
-            (全 ${users_count} 件) <br />
+        <nav aria-label="user list page nation">
+            <div class="d-inline-flex bg-white text-primary border border-primary rounded mb-1 pl-1 pr-1">
+                (全 ${users_count} 件)
+            </div><br />
+            <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+                </a>
+            </li>
             <c:forEach var="i" begin="1" end="${((users_count - 1) / 15) + 1}" step="1">
-                <c:choose>
-                    <c:when test="${i == page}">
-                        <c:out value="${i}" />&nbsp;
-                    </c:when>
-                    <c:otherwise>
-                        <a href="<c:url value='/user/index?page=${i}' />"><c:out value="${i}" /></a>&nbsp;
-                    </c:otherwise>
-                </c:choose>
+                        <li class="page-item"> <a class="page-link" href="<c:url value='/user/index?page=${i}' />">
+                    <c:out value="${i}" /></a></li>
             </c:forEach>
-        </div>
-        <p><a href="<c:url value='/user/new' />">新規ユーザーの登録</a></p>
-        <p><a href="<c:out value="../" />" >トップページへ戻る</a></p>
+            <li class="page-item">
+                 <a class="page-link" href="#" aria-label="Next">
+                 <span aria-hidden="true">&raquo;</span>
+                 <span class="sr-only">Next</span>
+                 </a>
+            </li>
+            </ul>
+        </nav>
+        <p><a href="<c:url value='/user/new' />" class="btn btn-warning btn-sm">新規ユーザーの登録</a></p>
+        <p><a href="<c:out value="../" />" class="btn btn-primary btn-sm">トップページへ戻る</a></p>
     </c:param>
 </c:import>

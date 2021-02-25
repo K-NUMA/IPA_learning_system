@@ -2,6 +2,7 @@ package utils;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -49,8 +50,9 @@ public class QuestionImgUpload extends HttpServlet {
             request.getSession().setAttribute("flush","ファイルをアップロードしました");
             response.sendRedirect(request.getContextPath() + "/amquestions/manager/index");
         }else{
-            request.getSession().setAttribute("flush","ファイルを選択して下さい");
-            response.sendRedirect(request.getContextPath() + "/amquestions/manager/index");
+            request.setAttribute("error","ファイルを選択して下さい");
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/amquestions/index.jsp");
+            rd.forward(request, response);
         }
     }
 

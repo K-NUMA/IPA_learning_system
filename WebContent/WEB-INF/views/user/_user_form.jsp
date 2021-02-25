@@ -8,17 +8,23 @@
         </c:forEach>
     </div>
 </c:if>
-<label for="user_id">ユーザーID</label><br />
-<input type="text" name="user_id" value="${user.user_id}" />
-<br /><br />
 
-<label for="user_name">ユーザー名</label><br />
-<input type="text" name="user_name" value="${user.user_name}" />
-<br /><br />
+<div class="d-flex bg-success text-white mt-2 pt-1 pl-2 pr-2 w-25">
+<div class="form-group w-100">
+<label for="user_id">ユーザID</label><br />
+<input type="text" name="user_id" value="${user.user_id}" class="form-control"/>
+<br />
+
+<label for="user_name">ユーザ名</label><br />
+<input type="text" name="user_name" value="${user.user_name}" class="form-control"/>
+<br />
 
 <label for="password">パスワード</label><br />
-<input type="password" name="password" />
-<br /><br />
+<input type="password" name="password" class="form-control" />
+
+</div>
+</div>
 
 <input type="hidden" name="_token" value="${_token}" />
 <button type="submit">実行</button>
+<br /><br />

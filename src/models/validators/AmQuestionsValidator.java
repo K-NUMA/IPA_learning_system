@@ -69,6 +69,7 @@ public class AmQuestionsValidator {
             return "";
         }
 
+        //問題を初めて登録(create)するときのみ呼び出す。編集(edit)だとややこしくなるため。
         private static String validateContentCheck(AmQuestion q,String filename,String filepath){
             EntityManager em = DBUtil.createEntityManager();
 

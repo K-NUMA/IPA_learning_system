@@ -12,7 +12,7 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${user != null}">
-                <table class="mt-5">
+                <table class="table table-bordered table-primary mt-5">
                     <tbody>
                         <tr>
                             <th>ユーザーID</th>
@@ -46,13 +46,13 @@
                     </tbody>
                 </table>
 
-                <p><a href="<c:url value='/user/edit?id=${user.id}' />">このユーザー情報を編集する</a></p>
+                <p><a href="<c:url value='/user/edit?id=${user.id}' />" class="btn btn-warning btn-sm">このユーザー情報を編集する</a></p>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>
             </c:otherwise>
         </c:choose>
 
-        <p><a href="<c:url value='/user/index' /> ">一覧に戻る</a></p>
+        <p><a href="<c:url value='/user/index' /> " class="btn btn-primary btn-sm">一覧に戻る</a></p>
     </c:param>
 </c:import>

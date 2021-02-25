@@ -38,7 +38,9 @@ public class UserIndexServlet extends HttpServlet {
         int page = 1;
         try{
             page = Integer.parseInt(request.getParameter("page"));
-        }catch(NumberFormatException e){}
+        }catch(NumberFormatException e){
+            page = 1;
+        }
 
         List<UserList> users = em.createNamedQuery("getAllUser",UserList.class)
                 .setFirstResult(15 * (page - 1))

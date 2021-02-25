@@ -13,8 +13,8 @@
         <c:choose>
             <c:when test="${userinfo != null}">
                 <h2 class="d-inline-flex p-2 bd-highlight bg-primary text-white rounded mt-5">ユーザー情報</h2>
-                <table class="table table-bordered">
-                    <tbody class="table-info"">
+                <table class="table table-bordered table-primary">
+                    <tbody>
                         <tr>
                             <th>ユーザーID</th>
                             <td><c:out value="${userinfo.user_id}" /></td>
@@ -42,7 +42,7 @@
                 <h2>お探しのデータは見つかりませんでした。</h2>
             </c:otherwise>
         </c:choose>
-        <p><a href="<c:url value='/mypage/felog' /> ">基本情報技術者試験の自習履歴を見る</a></p>
-        <p><a href="<c:url value='/' /> ">午前問題のトップページへ戻る</a></p>
+        <p><a href="<c:url value='/mypage/felog' /> " class="btn btn-primary btn-sm">基本情報技術者試験の自習履歴を見る</a></p>
+        <p><a href="<c:url value='/' /> " class="btn btn-primary btn-sm">午前問題のトップページへ戻る</a></p>
     </c:param>
 </c:import>

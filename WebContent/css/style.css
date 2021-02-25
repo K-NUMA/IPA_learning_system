@@ -8,7 +8,7 @@ main > .container {
 }
 
 .footer {
-  background-color: #f5f5f5;
+  background-color: #008080;
 }
 
 .footer > .container {
@@ -25,12 +25,45 @@ table#user_list td{
     padding: 10px 2%;
 }
 
-#user_name{
-    color: #cccccc;
-    width: 36%;
-    padding-right: 3%;
-    text-align: right;
-    display: inline-block;
+#flush_success{
+    font-size: 20px;
+    color: #007900;
+    background-color: #80ff80;
+    text-align:center;
+}
+
+#flush_error{
+    color: #ff0000;
+    background-color: #ffacac;
+    text-align:center;
+}
+
+.w-30{
+    width:30%;
+}
+
+.w-12{
+    width:12%;
+}
+
+/* フラッシュメッセージ用のアニメーション */
+.fadein{
+    opacity: 0;
+    animation: fadeIn 2.0s ease-out 0.3s normal;
+    animation-fill-mode: forwards; /* アニメーション後、表示はそのままにしておく */
+}
+
+@keyframes fadeIn{
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+tr.row1{
+    background-color: #f2f2f2;
+}
+
+tr.row0{
+    background-color: #ffffff;
 }
 
 /* boostrapのborderの太さを変更 */

@@ -85,7 +85,9 @@ public class TestQuestions extends HttpServlet {
         try{
             //問題の番号をリクエストスコープへ格納(リストの添え字なので-1しておく)
             request.setAttribute("qnum", qnum-1);
-        }catch(NoResultException e){}
+        }catch(NoResultException e){
+            request.setAttribute("not_found","問題の番号が見つかりませんでした。");
+        }
 
 
 
