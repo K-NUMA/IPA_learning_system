@@ -23,7 +23,7 @@ public class TestScoring extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     //問題の種類数(1.基礎理論から9.企業と法務まで)
-    final static int QCATEGORY = 9;
+    final int QCATEGORY = 9;
 
     /**
      * @see HttpServlet#HttpServlet()

@@ -89,18 +89,24 @@
 
                     <c:if test="${scoringFlg == 'true'}">
                         <form method="GET" action="<c:url value='/amquestions/test/testscoring' />">
-                            <button type="submit" onClick="return confirmMessage('採点を行いますか？')">
+                            <button type="submit" onClick="return confirmMessage('採点を行いますか？')"
+                            class="btn btn-warning btn-sm mt-2 mb-2">
                             解答結果を採点する</button>
                         </form>
                     </c:if>
 
             </div>
             </div>
+
+
+        <!-- 誤ってクリックして戻らないように、トップページへ戻るかどうか確認する -->
+        <p><a href="<c:url value='/' /> " class="btn btn-warning" onClick="return confirmMessage('解答中ですがトップページに戻りますか？')" >トップページへ戻る</a></p>
             </c:when>
 
             <c:otherwise>
-                <h2>ご指定の問題は見つかりませんでした。</h2>
+                <h2 class="mt-5">ご指定の問題は見つかりませんでした。</h2>
                 <p>試験の年度と時期をもう一度選んでください</p>
+                <a href="<c:url value='/' /> " class="btn btn-primary" >トップページへ戻る</a>
             </c:otherwise>
         </c:choose>
         <br />
@@ -115,8 +121,5 @@
             }
         }
         </script>
-
-        <!-- 誤ってクリックして戻らないように、トップページへ戻るかどうか確認する -->
-        <p><a href="<c:url value='/' /> " class="btn btn-primary" onClick="return confirmMessage('解答中ですがトップページに戻りますか？')" >トップページへ戻る</a></p>
     </c:param>
 </c:import>

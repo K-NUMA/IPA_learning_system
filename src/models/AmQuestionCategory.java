@@ -7,9 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Table(name="amquestioncategory")
+@NamedQueries({
+    @NamedQuery(
+            name = "ScoreIdSelectData",
+            query = "SELECT a FROM AmQuestionCategory as a WHERE a.score_id = :score_id"
+            )
+})
 @Entity
 public class AmQuestionCategory {
     @Id

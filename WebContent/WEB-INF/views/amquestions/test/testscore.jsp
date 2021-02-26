@@ -23,19 +23,37 @@
                     </div>
                 </c:otherwise>
             </c:choose>
-        <p>問題の分野毎の正答率</p>
-        <c:forEach var="categorys" items="${qcategorys}" varStatus="status">
-            <c:choose>
-                <c:when test="${anscategory[status.index] >= 0.0}">
-                    <c:out value="${categorys}" />:<c:out value="${anscategory[status.index]}" />&nbsp;
-                </c:when>
-                <c:otherwise>
-                    <c:out value="${categorys}" />:出題されていません&nbsp;
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-        <canvas id="myRaderChart"></canvas>
-        <h2>全<c:out value="${qcounts}" />問</h2>
+            <br />
+
+        <div class="d-inline-flex text-white bg-primary pt-1 pl-1 pb-1 pr-1 rounded mt-3 mb-1">問題の分野毎の正答率</div>
+
+                <table id="score_rate">
+                    <tbody>
+                        <c:forEach var="categorys" items="${qcategorys}" varStatus="status">
+                            <c:choose>
+                                <c:when test="${anscategory[status.index] >= 0.0}">
+                                    <tr class="border">
+                                    <th class="text-white bg-primary pl-2 pr-2">
+                                    <c:out value="${categorys}" />
+                                    </th>
+                                    <td class="bg-white p-1"><c:out value="${anscategory[status.index]}" />%</td>
+                                    </tr>
+                                </c:when>
+                                <c:otherwise>
+                                    <tr class="border">
+                                    <th class="text-white bg-primary pl-2 pr-2">
+                                    <c:out value="${categorys}" />
+                                    </th>
+                                    <td class="bg-white p-1">出題されていません</td>
+                                    </tr>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                     </tbody>
+                </table>
+
+        <canvas id="myRaderChart" class="d-flex bg-white mt-3 mb-3"></canvas>
+        <h2 class="d-inline-flex bg-white border border-primary rounded text-primary p-2 mb-3">出題数:<c:out value="${qcounts}" />問</h2>
         <table class="table table-sm table-bordered p-1">
             <tbody class="text-white">
                 <thead>
@@ -134,7 +152,7 @@
         </c:when>
         <c:otherwise>
             <h2>ご指定のページは見つかりませんでした。</h2>
-            <p><a href="<c:out value="/" />" >トップページへ戻る</a></p>
+            <p><a href="<c:out value="/" />" class="btn btn-primary" >トップページへ戻る</a></p>
         </c:otherwise>
         </c:choose>
 

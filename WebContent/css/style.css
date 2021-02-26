@@ -46,6 +46,10 @@ table#user_list td{
     width:12%;
 }
 
+table#score_rate td{
+    text-align:right;
+}
+
 /* フラッシュメッセージ用のアニメーション */
 .fadein{
     opacity: 0;

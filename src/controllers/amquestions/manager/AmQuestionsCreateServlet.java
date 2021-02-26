@@ -42,15 +42,12 @@ public class AmQuestionsCreateServlet extends HttpServlet {
             AmQuestion q = new AmQuestion();
 
             //フォームから受け取ったデータをそれぞれ、対象のカラムへ保存する。
-            try{
+
                 q.setQs_year(request.getParameter("year"));
                 q.setQs_season(request.getParameter("season"));
                 q.setQs_number(Integer.parseInt(request.getParameter("qnumber")));
                 q.setAnswer(Integer.parseInt(request.getParameter("answer")));
                 q.setCategory(Integer.parseInt(request.getParameter("category")));
-            }catch(NumberFormatException e){
-
-            }
 
             //サーバへアップロードした"問題の画像ファイル名(PNGファイル)"の文字列データを作成
             String filename = "FE_" + request.getParameter("year") + "_" + request.getParameter("season")

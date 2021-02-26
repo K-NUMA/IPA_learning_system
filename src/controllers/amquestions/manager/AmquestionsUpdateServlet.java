@@ -38,12 +38,9 @@ public class AmquestionsUpdateServlet extends HttpServlet {
                 AmQuestion q = em.find(AmQuestion.class, (Integer)request.getSession().getAttribute("question_id"));
 
                 //主な変更部分は、問題の分野と答えのみなので、バリデーションチェックの必要は無し
-                try{
                     q.setAnswer(Integer.parseInt(request.getParameter("answer")));
                     q.setCategory(Integer.parseInt(request.getParameter("category")));
-                }catch(NumberFormatException e){
 
-                }
                     //AmQuestionテーブルへ変更する内容をコミット
                     em.getTransaction().begin();
                     em.getTransaction().commit();

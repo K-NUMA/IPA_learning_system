@@ -22,6 +22,7 @@
                     <th class="test_season">試験の出題時期&nbsp;</th>
                     <th class="test_season">点数&nbsp;</th>
                     <th class="test_date">受けた日付&nbsp;</th>
+                    <th class="test_result">結果の詳細&nbsp;</th>
                 </tr>
              </thead>
                 <c:forEach var="testlog" items="${testlog}" varStatus="status">
@@ -30,7 +31,7 @@
                         <td class="test_season"><c:out value="${testlog.test_season}" /></td>
                         <td class="test_season"><c:out value="${testlog.score}" /></td>
                         <td class="report_date"><fmt:formatDate value="${testlog.anstime}" pattern='yyyy-MM-dd' /></td>
-
+                        <td class="test_result"><a href="<c:url value='/mypage/feshow?id=${testlog.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
