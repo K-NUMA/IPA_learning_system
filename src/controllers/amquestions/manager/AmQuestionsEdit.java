@@ -41,6 +41,7 @@ public class AmQuestionsEdit extends HttpServlet {
         request.setAttribute("amquestion", q);
         request.setAttribute("_token", request.getSession().getId());
         request.getSession().setAttribute("question_id", q.getId());
+        request.setAttribute("edit_flag", 1);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/amquestions/edit.jsp");
         rd.forward(request, response);

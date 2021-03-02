@@ -42,21 +42,27 @@ public class AmQuestionsCreateServlet extends HttpServlet {
             AmQuestion q = new AmQuestion();
 
             //フォームから受け取ったデータをそれぞれ、対象のカラムへ保存する。
-
+            try{
                 q.setQs_year(request.getParameter("year"));
                 q.setQs_season(request.getParameter("season"));
                 q.setQs_number(Integer.parseInt(request.getParameter("qnumber")));
-                q.setAnswer(Integer.parseInt(request.getParameter("answer")));
                 q.setCategory(Integer.parseInt(request.getParameter("category")));
+                q.setAnswer(Integer.parseInt(request.getParameter("answer")));
+            }catch(NumberFormatException e){
+                //バリデーションチェックで未入力かどうかチェックするためこの部分は何も書かない
+            }
 
             //サーバへアップロードした"問題の画像ファイル名(PNGファイル)"の文字列データを作成
             String filename = "FE_" + request.getParameter("year") + "_" + request.getParameter("season")
             + "_問" + request.getParameter("qnumber") + ".png";
 
+            String filepath = (String)this.getServletContext().getAttribute("Filepath") + "/" +
+                    "FE_" + request.getParameter("year") + "_" + request.getParameter("season") + "/";
+
             q.setContentImg(filename);
 
             //出題時期、問題番号、問題の画像ファイル名のエラーチェックを行う。
-            List<String> errors = AmQuestionsValidator.validate(q,filename,(String)this.getServletContext().getAttribute("Filepath"));
+            List<String> errors = AmQuestionsValidator.validate(q,filename,filepath);
 
             //バリデーションチェックでエラーが見つかった場合、フラッシュメッセージを表示する。
             if(errors.size() > 0){

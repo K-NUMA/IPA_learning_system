@@ -60,8 +60,9 @@
 
                           <div class="d-flex flex-row bd-highlight" >
                                 <c:if test="${j+i+i*19 < qnumbers }">
-                                    <a href="<c:url value='/amquestions/test/testquestion?select_year=${qlist[qnum].qs_year}
-                                    &select_season=${qlist[qnum].qs_season}&qnumber=${qlist[j+i+i*19].qs_number}' />"
+                                    <a href="<c:url value='/amquestions/test/testquestion?select_year=${qlist[j+i+i*19].qs_year}
+                                    &select_season=${qlist[j+i+i*19].qs_season}&qnumber=${qlist[j+i+i*19].qs_number}
+                                    &list_number=${j+i+i*19}' />"
                                     class="border border-primary rounded-circle">問<c:out
                                     value="${qlist[j+i+i*19].qs_number}" /></a>:
                                 <c:choose>

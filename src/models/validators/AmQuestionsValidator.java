@@ -31,6 +31,12 @@ public class AmQuestionsValidator {
                 errors.add(category_error);
             }
 
+            String answer_error = validateAnswer(q.getAnswer());
+
+            if(!answer_error.equals("")){
+                errors.add(answer_error);
+            }
+
             String content_error = validateContentCheck(q,filename,filepath);
 
             if(!content_error.equals("")){
@@ -69,10 +75,21 @@ public class AmQuestionsValidator {
             return "";
         }
 
+        private static String validateAnswer(Integer answer){
+
+            //問題の分野の必須入力チェック
+            if(answer == null || answer.equals("")){
+                return "答えを入力してください";
+            }
+
+            return "";
+        }
+
         //問題を初めて登録(create)するときのみ呼び出す。編集(edit)だとややこしくなるため。
         private static String validateContentCheck(AmQuestion q,String filename,String filepath){
+           //問題の出題時期、番号が未入力の場合、エラーメッセージを返す
+           if(q.getQs_year()!=null && q.getQs_season()!=null && q.getQs_number()!=null){
             EntityManager em = DBUtil.createEntityManager();
-
             //登録する問題が既にテーブルへ登録されているかチェック
             long quploaded = (long)em.createNamedQuery("getUploadedQuestion",Long.class)
                     .setParameter("qs_year", q.getQs_year())
@@ -91,12 +108,14 @@ public class AmQuestionsValidator {
             File[] list = dir.listFiles();
 
             for(int i=0;i < list.length; i++){
-                if(list[i].getName().contains(filename)){
+                if(list[i].getName().contains(filename) && q.getQs_number()!=null){
                     return "";
                 }
             }
 
 
             return "問題内容がアップロードされていません";
+           }
+           return "問題内容がアップロードされていません";
         }
 }

@@ -29,7 +29,7 @@
 
             <input type="radio" name="select_season" value="春期" checked="checked">春期
             <input type="radio" name="select_season" value="秋期" id="autum">秋期
-            <input type="hidden" name="qnumber" value="0">
+            <input type="hidden" name="list_number" value="-1">
             <br />
             <label for="qyear">出題数を指定</label>
             <select id="numbers" name="select_number">

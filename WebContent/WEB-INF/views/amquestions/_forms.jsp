@@ -17,7 +17,7 @@
 <!-- datalistの値にカーソルを合わせるとイベントハンドラであるonmouseoverからjsのfunctionを呼び出し、
 ファイルをアップロードするフォームの該当するidへ値をコピーする。 -->
 <c:choose>
-    <c:when  test="${amquestion.qs_year == null}" >
+    <c:when  test="${amquestion.qs_year == null || edit_flag == null}" >
         <input type="text" name="year" autocomplete="on" list="years" id="yearsIn"
         class="form-control" onmouseover="incopy('year',this.id)" />
         <c:import url="yearlist.jsp" />
@@ -33,11 +33,11 @@
 <!-- ラジオボタンをクリックすると、onclickでjsのfunctionを呼びだし、呼び出し元のidから
 ファイルをアップロードするフォームの該当するidへ値をコピーする。 -->
 <c:choose>
-    <c:when  test="${amquestion.qs_season == '春期'}" >
+    <c:when  test="${amquestion.qs_season == '春期' && edit_flag != null}" >
         <input type="radio" name="season" value="春期" checked="checked" id="spring" onclick="incopy('season',this.id)" disabled="disabled"/>春期
         <input type="radio" name="season" value="秋期" id="autum" onclick="incopy('season',this.id)" disabled="disabled"/>秋期
     </c:when>
-    <c:when  test="${amquestion.qs_season == '秋期'}" >
+    <c:when  test="${amquestion.qs_season == '秋期' && edit_flag != null}" >
         <input type="radio" name="season" value="春期" id="spring" onclick="incopy('season',this.id)" disabled="disabled"/>春期
         <input type="radio" name="season" value="秋期" checked="checked"  id="autum" onclick="incopy('season',this.id)" disabled="disabled"/>秋期
     </c:when>
@@ -53,7 +53,7 @@
 ファイルをアップロードするフォームの該当するidへ値をコピーする。 -->
 
 <c:choose>
-    <c:when  test="${amquestion.qs_number == null}" >
+    <c:when  test="${amquestion.qs_number == null || edit_flag == null}" >
         <div class="d-inline-flex">
         問<input type="number" name="qnumber" max=80 min=1 id="qnum" onclick="incopy('number',this.id)"
         class="form-control form-control-sm mt-n1" />

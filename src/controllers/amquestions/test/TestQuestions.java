@@ -38,7 +38,7 @@ public class TestQuestions extends HttpServlet {
 
         String test_year = null;
         String test_season = null;
-        Integer qnum = Integer.parseInt(request.getParameter("qnumber"));
+        int list_number = Integer.parseInt(request.getParameter("list_number"));
         final int TESTMAXNUMBER = 80;
 
         test_year = request.getParameter("select_year");
@@ -47,7 +47,7 @@ public class TestQuestions extends HttpServlet {
         request.setAttribute("test_season", test_season);
 
         //toppage.jspからのリクエストでのみif文内の処理を行う
-        if(qnum == 0 && !test_year.equals("") && !test_season.equals("")){
+        if(list_number == -1 && !test_year.equals("") && !test_season.equals("")){
             List<AmQuestion> qlist = em.createNamedQuery("getYearQuestion",AmQuestion.class)
                     .setParameter("qs_year", test_year)
                     .setParameter("qs_season", test_season)
@@ -61,12 +61,12 @@ public class TestQuestions extends HttpServlet {
             if(test_numbers != TESTMAXNUMBER && qlist.size() > test_numbers){
                 int i=0;
                 while(qlist.size() > test_numbers){
-                    i = (int)Math.random() * qlist.size();
+                    i = (int)(Math.random() * qlist.size());
                     qlist.remove(i);
                 }
             }
 
-            qnum = 1;
+            list_number = 0;
 
           //選んだ解答を格納する配列
             String[] ans = new String[qlist.size()];
@@ -83,8 +83,8 @@ public class TestQuestions extends HttpServlet {
         }
 
         try{
-            //問題の番号をリクエストスコープへ格納(リストの添え字なので-1しておく)
-            request.setAttribute("qnum", qnum-1);
+            //問題を格納しているリストをリクエストスコープへ格納
+            request.setAttribute("qnum", list_number);
         }catch(NoResultException e){
             request.setAttribute("not_found","問題の番号が見つかりませんでした。");
         }
