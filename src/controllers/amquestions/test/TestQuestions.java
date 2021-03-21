@@ -78,8 +78,9 @@ public class TestQuestions extends HttpServlet {
 
             //ファイル名から保存先のフォルダ―名を定義(例:FE_年号(平成、令和など)〇〇年_春期 or 秋期)
             //試験中のみ定義したフォルダ名をセッションスコープへ格納
-            String folder_name = "FE_" + test_year + "_" + test_season;
-            request.getSession().setAttribute("folder_name", folder_name);
+            String folder_name = "FE_" + test_year + "_" + test_season + " 問題の画像";
+            request.getSession().setAttribute("question_name",(String)this.getServletContext().getAttribute("Filepath")
+                    + "/" + folder_name);
         }
 
         try{

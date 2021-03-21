@@ -14,7 +14,7 @@
                 <div class="d-flex justify-content-start pt-5">
                 <div class="d-flex flex-column bd-highlight mb-3 p-1 bg-dark text-white" >
                         <div class="pt-2 pl-2 mb-2 bg-primary text-white"><p>問題内容</p></div>
-                    <img src="<c:url value='/FE_img/${folder_name}/${qlist[qnum].contentImg}' />" alt="not view">
+                    <img src="<c:url value='${question_name}/${qlist[qnum].contentImg}' />" alt="not view">
                 </div>
 
                 <div class="d-flex flex-column bd-highlight mb-3 p-1 bg-dark text-white border-left" >
