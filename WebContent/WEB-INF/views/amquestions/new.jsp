@@ -9,7 +9,6 @@
                 下記の項目を入力してください
         </h2>
         <br />
-        <div class="d-inline-flex bg-warning pt-1 pl-1 pb-1 pr-1">※問題の内容は事前に画像をアップロードしておいて下さい</div>
 
         <form method="POST" action="<c:url value='/amquestions/manager/create' />" id="qupload">
             <c:import url="_forms.jsp" />

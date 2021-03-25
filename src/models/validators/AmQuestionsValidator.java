@@ -1,6 +1,5 @@
 package models.validators;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,7 +102,8 @@ public class AmQuestionsValidator {
                 return "既に登録済みの問題です";
             }
 
-            //登録する問題の画像がアップロードされているかチェック
+            /*登録する問題の画像がアップロードされているかチェック
+             * heroku環境でのアップロードが上手くいかないため断念
             File dir = new File(filepath);
             File[] list = dir.listFiles();
 
@@ -113,9 +113,8 @@ public class AmQuestionsValidator {
                 }
             }
 
-
-            return "問題内容がアップロードされていません";
+            return "問題内容がアップロードされていません"; */
            }
-           return "問題内容がアップロードされていません";
+           return "";
         }
 }

@@ -13,7 +13,7 @@
                 <br />
 
                 <div class="d-inline-flex bg-warning pt-1 pl-1 pb-1 pr-1">※問題の出題時期、番号は変更できません。
-                (問題を変更したい場合は、該当する問題の画像をアップロードして下さい)</div>
+                </div>
                 <br />
 
                 <form method="POST" action="<c:url value='/amquestions/manager/update' />">

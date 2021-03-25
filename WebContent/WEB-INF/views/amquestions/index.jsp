@@ -55,7 +55,7 @@
             </div>
         <br /><br />
 
-            <!-- 画像で保存した問題内容をサーブレットでアップロード -->
+            <!-- 画像で保存した問題内容をサーブレットでアップロード heroku環境でアップロードが上手くいかないため断念
             <div class="d-inline-flex text-white bg-success pl-1 pr-5 w-30">問題の画像をアップロード</div>
              <div class="d-flex text-black bg-white border-5 border-success w-30 pl-2 pr-2">
 
@@ -68,7 +68,7 @@
                     </div>
                 </form>
              </div>
-             <br />
+             <br /> -->
 
         <p><a href="<c:url value="/amquestions/manager/new" />" class="btn btn-primary btn-sm">午前の問題を新規登録</a> </p>
         <p><a href="<c:url value='/' /> " class="btn btn-primary btn-sm">トップページへ戻る</a></p>
