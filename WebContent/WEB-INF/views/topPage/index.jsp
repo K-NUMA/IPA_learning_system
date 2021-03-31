@@ -7,6 +7,8 @@
     <c:param name="content">
         <p><h2 class="d-inline-flex p-2 bd-highlight bg-primary text-white rounded mt-5">出題形式一覧</h2><p>
 
+        <!-- herokuの仕様上、DBに登録した問題のテーブルのid(主キー)が44以降10ずつ採番されて
+        いるため、コメントアウト(44までは、ローカル環境で登録を行っていた)
         <div class="d-flex text-white bg-success pl-1 pr-1 w-25">一問一答形式</div>
         <div class="d-flex text-black bg-white border-5 border-success w-25 my-box pl-2 pr-2">
         <form method="GET" action="<c:url value="/amquestions/test/askquestions" />">
@@ -16,7 +18,7 @@
             </div>
         </form>
         </div>
-        <br />
+        <br /> -->
 
         <div class="d-flex text-white bg-success pl-1 pr-1 w-25">試験形式(ログイン必須です)</div>
         <div class="d-flex text-black bg-white border-5 border-success w-25 my-box pb-2 pl-2 pr-2">

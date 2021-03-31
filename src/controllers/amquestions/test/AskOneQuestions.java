@@ -42,9 +42,9 @@ public class AskOneQuestions extends HttpServlet {
             long questionNum = (long)em.createNamedQuery("getQuestionsCount",Long.class).getSingleResult();
 
             //1から問題数まで、ランダムな値を選択(1を加算しないと0が選ばれる)
-            double selectquestion = Math.random() * questionNum + 1;
+            int selectquestion = (int)(Math.random() * questionNum + 1);
 
-            q = em.find(AmQuestion.class, (int)selectquestion);
+            q = em.find(AmQuestion.class, selectquestion);
         }else if(request.getParameter("requestpage").equals("answer")){
             q = em.find(AmQuestion.class, Integer.parseInt(request.getParameter("id")));
             request.setAttribute("answerd", request.getParameter("answer"));
