@@ -19,7 +19,7 @@ import javax.persistence.Table;
     @NamedQuery(
             name="getYearQuestion",
             query="SELECT q FROM AmQuestion AS q WHERE "
-                    + "q.qs_year = :qs_year AND q.qs_season = :qs_season  ORDER BY q.qs_season DESC"
+                    + "q.qs_year = :qs_year AND q.qs_season = :qs_season  ORDER BY q.qs_number"
             ),
     @NamedQuery(
             name="getUploadedQuestion",
