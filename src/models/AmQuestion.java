@@ -14,7 +14,10 @@ import javax.persistence.Table;
     @NamedQuery(
             name="getQuestionsCount",
             query="SELECT COUNT(q) from AmQuestion as q"
-
+            ),
+    @NamedQuery(
+            name="getQuestions",
+            query="SELECT q from AmQuestion as q"
             ),
     @NamedQuery(
             name="getYearQuestion",

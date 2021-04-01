@@ -1,6 +1,7 @@
 package controllers.amquestions.test;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
@@ -40,11 +41,13 @@ public class AskOneQuestions extends HttpServlet {
         //jspのtoppageのリクエストかservletのAnsQuestionのリクエストかで処理を分岐する
         if(request.getParameter("requestpage").equals("top")){
             long questionNum = (long)em.createNamedQuery("getQuestionsCount",Long.class).getSingleResult();
+            List<AmQuestion> questionList = em.createNamedQuery("getQuestions",AmQuestion.class).getResultList();
 
-            //1から問題数まで、ランダムな値を選択(1を加算しないと0が選ばれる)
-            int selectquestion = (int)(Math.random() * questionNum + 1);
+            //1から問題数まで、ランダムな値を選択
+            int selectquestion = (int)(Math.random() * questionNum);
 
-            q = em.find(AmQuestion.class, selectquestion);
+            //ランダムに選んだ値を添え字として、問題のリストから該当の要素を取得
+            q = questionList.get(selectquestion);
         }else if(request.getParameter("requestpage").equals("answer")){
             q = em.find(AmQuestion.class, Integer.parseInt(request.getParameter("id")));
             request.setAttribute("answerd", request.getParameter("answer"));
