@@ -36,9 +36,9 @@ public class SelectAnswer extends HttpServlet {
         String[] ans = (String[])request.getSession().getAttribute("ans");
 
         //questionNumは解答用の配列の添え字なので-1しておく
-        ans[questionNum - 1] = questionAns;
+        ans[questionNum] = questionAns;
         request.getSession().setAttribute("ans",ans);
-        request.setAttribute("qnum", questionNum - 1);
+        request.setAttribute("qnum", questionNum);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/amquestions/test/testquestion.jsp");
         rd.forward(request, response);

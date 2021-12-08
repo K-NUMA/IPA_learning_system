@@ -23,22 +23,22 @@
                 <c:choose>
                     <c:when test="${answerd == null}">
                         <form method="GET" action="<c:url value='/amquestions/test/selectans' />">
-                            <input type="hidden" value="<c:out value="${qlist[qnum].qs_number}" />" name="qnumber" />
+                            <input type="hidden" value="<c:out value="${qnum}" />" name="qnumber" />
                             <input type="hidden" value="1" name="ans">
                             <button type="submit" class="btn btn-outline-success">ア</button>
                         </form>
                         <form method="GET" action="<c:url value='/amquestions/test/selectans' />">
-                            <input type="hidden" value="<c:out value="${qlist[qnum].qs_number}" />" name="qnumber" />
+                            <input type="hidden" value="<c:out value="${qnum}" />" name="qnumber" />
                             <input type="hidden" value="2" name="ans">
                             <button type="submit" class="btn btn-outline-success">イ</button>
                         </form>
                         <form method="GET" action="<c:url value='/amquestions/test/selectans' />">
-                            <input type="hidden" value="<c:out value="${qlist[qnum].qs_number}" />" name="qnumber" />
+                            <input type="hidden" value="<c:out value="${qnum}" />" name="qnumber" />
                             <input type="hidden" value="3" name="ans">
                             <button type="submit" class="btn btn-outline-success">ウ</button>
                         </form>
                         <form method="GET" action="<c:url value='/amquestions/test/selectans' />">
-                            <input type="hidden" value="<c:out value="${qlist[qnum].qs_number}" />" name="qnumber" />
+                            <input type="hidden" value="<c:out value="${qnum}" />" name="qnumber" />
                             <input type="hidden" value="4" name="ans">
                             <button type="submit" class="btn btn-outline-success">エ</button>
                         </form>
@@ -101,7 +101,7 @@
 
 
         <!-- 誤ってクリックして戻らないように、トップページへ戻るかどうか確認する -->
-        <p><a href="<c:url value='/' /> " class="btn btn-warning" onClick="return confirmMessage('解答中ですがトップページに戻りますか？')" >トップページへ戻る</a></p>
+<%--         <p><a href="<c:url value='/' /> " class="btn btn-warning" onClick="return confirmMessage('解答中ですがトップページに戻りますか？')" >トップページへ戻る</a></p> --%>
             </c:when>
 
             <c:otherwise>

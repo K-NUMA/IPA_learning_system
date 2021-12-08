@@ -7,11 +7,27 @@ main > .container {
   padding: 60px 15px 0;
 }
 
-.footer {
-  background-color: #008080;
+.wrapper{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+    /*margin-top:65px;*/
 }
 
-.footer > .container {
+.toplittle{
+    margin-top:70px;
+}
+
+footer {
+    width: 100%;
+    padding: 30px;
+    background-color: #000000;
+    position: absolute;
+    bottom: 0;
+}
+
+footer > .container {
   padding-right: 15px;
   padding-left: 15px;
 }
@@ -75,3 +91,4 @@ tr.row0{
     border-style:solid;
     border-width:5px;
 }
+

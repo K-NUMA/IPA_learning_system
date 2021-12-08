@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
     <c:param name="pagename">
-        <h1 class="navbar-brand">基本情報技術者試験 問題の管理画面(管理者用ページ)</h1>
+        <h1 class="navbar-brand">問題の管理画面(管理者用ページ)</h1>
     </c:param>
     <c:param name="content">
 

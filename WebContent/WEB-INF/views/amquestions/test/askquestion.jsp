@@ -78,6 +78,6 @@
             </c:otherwise>
         </c:choose>
 
-        <p><a href="<c:url value='/' /> " class="btn btn-primary">トップページへ戻る</a></p>
+<%--         <p><a href="<c:url value='/' /> " class="btn btn-primary">トップページへ戻る</a></p> --%>
     </c:param>
 </c:import>
