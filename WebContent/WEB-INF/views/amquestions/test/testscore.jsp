@@ -51,8 +51,19 @@
                         </c:forEach>
                      </tbody>
                 </table>
-
-        <canvas id="myPieChart" class="d-flex bg-white mt-3 mb-3"></canvas>
+        <div class="container">
+        <div class="row">
+        <div class="col">
+            <canvas id="myPieChart1" class="d-flex bg-white mt-3 mb-3"></canvas>
+        </div>
+        <div class="col">
+            <canvas id="myPieChart2" class="d-flex bg-white mt-3 mb-3"></canvas>
+        </div>
+        <div class="col">
+            <canvas id="myPieChart3" class="d-flex bg-white mt-3 mb-3"></canvas>
+        </div>
+        </div>
+        </div>
         <h2 class="d-inline-flex bg-white border border-primary rounded text-primary p-2 mb-3">出題数:<c:out value="${qcounts}" />問</h2>
         <table class="table table-sm table-bordered p-1">
             <tbody class="text-white">
@@ -157,7 +168,7 @@
         </c:choose>
 
         <script>
-        var ctx = document.getElementById("myPieChart");
+        var ctx = document.getElementById("myPieChart1");
         var myPieChart = new Chart(ctx, {
           type: 'pie',
           data: {
@@ -174,6 +185,48 @@
             title: {
               display: true,
               text: '"<c:out value="${qcategorys[0]}" />"'
+            }
+          }
+        });
+
+        var ctx = document.getElementById("myPieChart2");
+        var myPieChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ["正解", "不正解"],
+            datasets: [{
+                backgroundColor: [
+                    "#BB5179",
+                    "#FAFF67",
+                ],
+                data: ["<c:out value="${graphAnsCategory[1]*100}" />", "<c:out value="${100-graphAnsCategory[1]*100}"/>"]
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: '"<c:out value="${qcategorys[1]}" />"'
+            }
+          }
+        });
+
+        var ctx = document.getElementById("myPieChart3");
+        var myPieChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ["正解", "不正解"],
+            datasets: [{
+                backgroundColor: [
+                    "#BB5179",
+                    "#FAFF67",
+                ],
+                data: ["<c:out value="${graphAnsCategory[2]*100}" />", "<c:out value="${100-graphAnsCategory[2]*100}"/>"]
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: '"<c:out value="${qcategorys[2]}" />"'
             }
           }
         });
