@@ -29,8 +29,8 @@
                 <div class="row">
                 <c:choose>
                     <c:when test="${sessionScope.login_user != null}">
-                            <div class="pt-2 col-md-auto">
-                            ログイン中のユーザー名:
+                            <div class="col-md-auto">
+                            ログイン中のユーザー名:<br>
                             <c:out
                             value="${sessionScope.login_user.user_name}" />&nbsp;&nbsp;
                             </div>

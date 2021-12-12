@@ -22,8 +22,8 @@ import utils.AnsWord;
 public class TestScoring extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    //問題の種類数(1.基礎理論から9.企業と法務まで)
-    final int QCATEGORY = 9;
+    //問題の種類数(1.テクノロジ系、2.マネジメント系、3.ストラテジ系まで)
+    final int QCATEGORY = 3;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -63,9 +63,7 @@ public class TestScoring extends HttpServlet {
         double scorePoint = 0.0;
 
         //viewで扱う問題分野名を格納した配列を定義
-        String[] categoryName = {"基礎理論","コンピュータシステム","技術要素","開発技術",
-                "プロジェクトマネジメント","サービスマネジメント","システム戦略"
-                ,"経営戦略","企業と法務"};
+        String[] categoryName = {"テクノロジ系","マネジメント系","ストラテジ系"};
 
         //解答が正解か一問ずつチェック
         for(int i=0 ; i < questions.size(); i++){
@@ -74,13 +72,13 @@ public class TestScoring extends HttpServlet {
                 ansResult[i] = "〇";
                 scorePoint += (double)1 / questions.size() * 100;
 
-              //問題の種類(1～9の番号)に応じた場所の正答数をカウント
+              //問題の種類(1～3の番号)に応じた場所の正答数をカウント
                 categoryNumAnsCnt[0][questions.get(i).getCategory()-1]++;
             }else{
                 ansResult[i] = "×";
             }
 
-          //問題の種類(1～9の番号)に応じた場所の出題数をカウント
+          //問題の種類(1～3の番号)に応じた場所の出題数をカウント
             categoryNumAnsCnt[1][questions.get(i).getCategory()-1]++;
         }
 

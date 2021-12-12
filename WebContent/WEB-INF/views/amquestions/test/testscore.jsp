@@ -27,32 +27,32 @@
 
         <div class="d-inline-flex text-white bg-primary pt-1 pl-1 pb-1 pr-1 rounded mt-3 mb-1">問題の分野毎の正答率</div>
 
-<!--                 <table id="score_rate"> -->
-<!--                     <tbody> -->
-<%--                         <c:forEach var="categorys" items="${qcategorys}" varStatus="status"> --%>
-<%--                             <c:choose> --%>
-<%--                                 <c:when test="${anscategory[status.index] >= 0.0}"> --%>
-<!--                                     <tr class="border"> -->
-<!--                                     <th class="text-white bg-primary pl-2 pr-2"> -->
-<%--                                     <c:out value="${categorys}" /> --%>
-<!--                                     </th> -->
-<%--                                     <td class="bg-white p-1"><c:out value="${anscategory[status.index]}" />%</td> --%>
-<!--                                     </tr> -->
-<%--                                 </c:when> --%>
-<%--                                 <c:otherwise> --%>
-<!--                                     <tr class="border"> -->
-<!--                                     <th class="text-white bg-primary pl-2 pr-2"> -->
-<%--                                     <c:out value="${categorys}" /> --%>
-<!--                                     </th> -->
-<!--                                     <td class="bg-white p-1">出題されていません</td> -->
-<!--                                     </tr> -->
-<%--                                 </c:otherwise> --%>
-<%--                             </c:choose> --%>
-<%--                         </c:forEach> --%>
-<!--                      </tbody> -->
-<!--                 </table> -->
+                <table id="score_rate">
+                    <tbody>
+                        <c:forEach var="categorys" items="${qcategorys}" varStatus="status">
+                            <c:choose>
+                                <c:when test="${anscategory[status.index] >= 0.0}">
+                                    <tr class="border">
+                                    <th class="text-white bg-primary pl-2 pr-2">
+                                    <c:out value="${categorys}" />
+                                    </th>
+                                    <td class="bg-white p-1"><c:out value="${anscategory[status.index]}" />%</td>
+                                    </tr>
+                                </c:when>
+                                <c:otherwise>
+                                    <tr class="border">
+                                    <th class="text-white bg-primary pl-2 pr-2">
+                                    <c:out value="${categorys}" />
+                                    </th>
+                                    <td class="bg-white p-1">出題されていません</td>
+                                    </tr>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                     </tbody>
+                </table>
 
-        <canvas id="myRaderChart" class="d-flex bg-white mt-3 mb-3"></canvas>
+        <canvas id="myPieChart" class="d-flex bg-white mt-3 mb-3"></canvas>
         <h2 class="d-inline-flex bg-white border border-primary rounded text-primary p-2 mb-3">出題数:<c:out value="${qcounts}" />問</h2>
         <table class="table table-sm table-bordered p-1">
             <tbody class="text-white">
@@ -157,42 +157,26 @@
         </c:choose>
 
         <script>
-        var ctx = document.getElementById("myRaderChart");
-        var myRadarChart = new Chart(ctx,
-                {
-        type: 'radar',
-        data: {
-            labels: [ "<c:out value="${qcategorys[0]}" />", "<c:out value="${qcategorys[1]}" />", "<c:out value="${qcategorys[2]}" />",
-                "<c:out value="${qcategorys[3]}" />","<c:out value="${qcategorys[4]}" />","<c:out value="${qcategorys[5]}" />",
-                "<c:out value="${qcategorys[6]}" />","<c:out value="${qcategorys[7]}" />","<c:out value="${qcategorys[8]}" />"],
+        var ctx = document.getElementById("myPieChart");
+        var myPieChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ["正解", "不正解"],
             datasets: [{
-                label: "<c:out value="${sessionScope.login_user.user_name}" />"+'さん',
-                data: [ "<c:out value="${graphAnsCategory[0]*100}" />", "<c:out value="${graphAnsCategory[1]*100}" />", "<c:out value="${graphAnsCategory[2]*100}" />",
-                    "<c:out value="${graphAnsCategory[3]*100}" />", "<c:out value="${graphAnsCategory[4]*100}" />","<c:out value="${graphAnsCategory[5]*100}" />",
-                    "<c:out value="${graphAnsCategory[6]*100}" />","<c:out value="${graphAnsCategory[7]*100}" />","<c:out value="${graphAnsCategory[8]*100}" />"],
-                backgroundColor: 'RGBA(225,95,150, 0.5)',
-                borderColor: 'RGBA(225,95,150, 1)',
-                borderWidth: 1,
-                pointBackgroundColor: 'RGB(46,106,177)'
+                backgroundColor: [
+                    "#BB5179",
+                    "#FAFF67",
+                ],
+                data: ["<c:out value="${graphAnsCategory[0]*100}" />", "<c:out value="${100-graphAnsCategory[0]*100}"/>"]
             }]
-        },
-        options: {
+          },
+          options: {
             title: {
-                display: true,
-                text: '問題分野毎の正答率(グラフ表示)'
-            },
-            scale:{
-                ticks:{
-                    suggestedMin: 0,
-                    suggestedMax: 100,
-                    stepSize: 10,
-                    callback: function(value, index, values){
-                        return  value +  '%'
-                    }
-                }
+              display: true,
+              text: '"<c:out value="${qcategorys[0]}" />"'
             }
-        }
-    });
+          }
+        });
     </script>
     </c:param>
 </c:import>

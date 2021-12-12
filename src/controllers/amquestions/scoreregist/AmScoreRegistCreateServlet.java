@@ -75,15 +75,9 @@ public class AmScoreRegistCreateServlet extends HttpServlet {
 
             //問題の分野毎の正答率をテーブルへ登録
             acategory.setScore_id(addedScore);
-            acategory.setBasic_theory(anscategory[0].doubleValue());
-            acategory.setCom_system(anscategory[1].doubleValue());
-            acategory.setTech_elements(anscategory[2].doubleValue());
-            acategory.setDevelop_tech(anscategory[3].doubleValue());
-            acategory.setPm(anscategory[4].doubleValue());
-            acategory.setSm(anscategory[5].doubleValue());
-            acategory.setSystem_st(anscategory[6].doubleValue());
-            acategory.setBusiness_st(anscategory[7].doubleValue());
-            acategory.setCo_legal(anscategory[8].doubleValue());
+            acategory.setTechnology(anscategory[0].doubleValue());
+            acategory.setManagement(anscategory[1].doubleValue());
+            acategory.setStrategy(anscategory[2].doubleValue());
 
             em.getTransaction().begin();
             em.persist(acategory);

@@ -36,31 +36,24 @@ public class FE_TestDetailsServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
         Integer id = Integer.parseInt(request.getParameter("id"));
         AmScoreRegist s = em.find(AmScoreRegist.class, id);
-        //問題の種類数(1.基礎理論から9.企業と法務まで)
-        final int QCATEGORY = 9;
+        //問題の種類数(1.テクノロジ系、2.マネジメント系、3.ストラテジ系)
+        final int QCATEGORY = 3;
 
         AmQuestionCategory c = em.createNamedQuery("ScoreIdSelectData",AmQuestionCategory.class)
                 .setParameter("score_id",s)
                 .getSingleResult();
 
       //問題分野名を格納する配列
-        String[] category_name = {"基礎理論","コンピュータシステム","技術要素","開発技術","プロジェクトマネジメント",
-                "サービスマネジメント","システム戦略","経営戦略","企業と法務"};
+        String[] category_name = {"テクノロジ系","マネジメント系","ストラテジ系"};
 
 
         //問題分野の点数を格納する配列
         double[] category_rate = new double[QCATEGORY];
 
         //問題分野毎に正答率を格納
-        category_rate[0] = c.getBasic_theory();
-        category_rate[1] = c.getCom_system();
-        category_rate[2] = c.getTech_elements();
-        category_rate[3] = c.getDevelop_tech();
-        category_rate[4] = c.getPm();
-        category_rate[5] = c.getSm();
-        category_rate[6] = c.getSystem_st();
-        category_rate[7] = c.getBusiness_st();
-        category_rate[8] = c.getCo_legal();
+        category_rate[0] = c.getTechnology();
+        category_rate[1] = c.getManagement();
+        category_rate[2] = c.getStrategy();
 
         //該当する問題分野の問題が出題されたかどうか表す配列
         boolean[] question_flag = new boolean[QCATEGORY];
