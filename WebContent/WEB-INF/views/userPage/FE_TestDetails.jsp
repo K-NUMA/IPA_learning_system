@@ -50,8 +50,21 @@
                         </c:forEach>
                      </tbody>
                 </table>
-                <canvas id="myRaderChart" class="d-flex bg-white mt-3 mb-3"></canvas>
-                <a href="<c:url value='/mypage/felog' /> " class="btn btn-primary" >前のページへ戻る</a>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <canvas id="myPieChart1" class="d-flex bg-white mt-3 mb-3"></canvas>
+                                </div>
+                                <div class="col">
+                                    <canvas id="myPieChart2" class="d-flex bg-white mt-3 mb-3"></canvas>
+                                </div>
+                                <div class="col">
+                                    <canvas id="myPieChart3" class="d-flex bg-white mt-3 mb-3"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="<c:url value='/mypage/felog' /> " class="btn btn-primary" >前のページへ戻る</a>
                 </c:when>
                 <c:otherwise>
                     <h2>ご指定の内容は見つかりませんでした。</h2>
@@ -66,57 +79,68 @@
         </c:choose>
 
         <script>
-            var ctx = document.getElementById("myRaderChart");
-            var myRadarChart = new Chart(
-                    ctx,
-                    {
-                        type : 'radar',
-                        data : {
-                            labels : [ "<c:out value="${category_name[0]}" />",
-                                    "<c:out value="${category_name[1]}" />",
-                                    "<c:out value="${category_name[2]}" />",
-                                    "<c:out value="${category_name[3]}" />",
-                                    "<c:out value="${category_name[4]}" />",
-                                    "<c:out value="${category_name[5]}" />",
-                                    "<c:out value="${category_name[6]}" />",
-                                    "<c:out value="${category_name[7]}" />",
-                                    "<c:out value="${category_name[8]}" />" ],
-                            datasets : [ {
-                                label : "<c:out value="${sessionScope.login_user.user_name}" />"
-                                        + 'さん',
-                                data : [
-                                        "<c:out value="${qcategorys[0]*100}" />",
-                                        "<c:out value="${qcategorys[1]*100}" />",
-                                        "<c:out value="${qcategorys[2]*100}" />",
-                                        "<c:out value="${qcategorys[3]*100}" />",
-                                        "<c:out value="${qcategorys[4]*100}" />",
-                                        "<c:out value="${qcategorys[5]*100}" />",
-                                        "<c:out value="${qcategorys[6]*100}" />",
-                                        "<c:out value="${qcategorys[7]*100}" />",
-                                        "<c:out value="${qcategorys[8]*100}" />" ],
-                                backgroundColor : 'RGBA(225,95,150, 0.5)',
-                                borderColor : 'RGBA(225,95,150, 1)',
-                                borderWidth : 1,
-                                pointBackgroundColor : 'RGB(46,106,177)'
-                            } ]
-                        },
-                        options : {
-                            title : {
-                                display : true,
-                                text : '問題の分野毎の正答率(グラフ表示)'
-                            },
-                            scale : {
-                                ticks : {
-                                    suggestedMin : 0,
-                                    suggestedMax : 100,
-                                    stepSize : 10,
-                                    callback : function(value, index, values) {
-                                        return value + '%'
-                                    }
-                                }
-                            }
-                        }
-                    });
+        var ctx = document.getElementById("myPieChart1");
+        var myPieChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ["正解", "不正解"],
+            datasets: [{
+                backgroundColor: [
+                    "#00ff00",
+                    "#ff0000",
+                ],
+                data: ["<c:out value="${qcategorys[0]*100}" />", "<c:out value="${100-qcategorys[0]*100}"/>"]
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: '"<c:out value="${category_name[0]}" />"'
+            }
+          }
+        });
+
+        var ctx = document.getElementById("myPieChart2");
+        var myPieChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ["正解", "不正解"],
+            datasets: [{
+                backgroundColor: [
+                    "#00ff00",
+                    "#ff0000",
+                ],
+                data: ["<c:out value="${qcategorys[1]*100}" />", "<c:out value="${100-qcategorys[1]*100}"/>"]
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: '"<c:out value="${category_name[1]}" />"'
+            }
+          }
+        });
+
+        var ctx = document.getElementById("myPieChart3");
+        var myPieChart = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ["正解", "不正解"],
+            datasets: [{
+                backgroundColor: [
+                    "#00ff00",
+                    "#ff0000",
+                ],
+                data: ["<c:out value="${qcategorys[2]*100}" />", "<c:out value="${100-qcategorys[2]*100}"/>"]
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: '"<c:out value="${category_name[2]}" />"'
+            }
+          }
+        });
         </script>
     </c:param>
 </c:import>

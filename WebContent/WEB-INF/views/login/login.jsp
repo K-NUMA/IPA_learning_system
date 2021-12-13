@@ -38,7 +38,7 @@
          </form>
          <br /><br />
 
-         <a href="<c:url value='/' /> " class="text-white btn bg-primary w-100">パスワードをお忘れの方はこちら</a>
+         <a href="<c:url value='/pschange' /> " class="text-white btn bg-primary w-100">パスワードをお忘れの方はこちら</a>
          </div>
     </c:param>
 </c:import>

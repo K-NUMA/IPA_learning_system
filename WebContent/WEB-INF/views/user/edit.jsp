@@ -5,13 +5,12 @@
             <h1 class="navbar-brand">登録ユーザーの編集画面</h1>
     </c:param>
     <c:param name="content">
-        <div class="mt-5">
-        <p>(パスワードは変更する場合のみ入力してください)</p>
+        <div class="mt-5 mx-auto">
         <form method="POST" action="<c:url value='/user/update' />">
             <c:import url="_user_form.jsp" />
         </form>
 
-        <p><a href="<c:url value='/user/index'/>">一覧に戻る</a></p>
+        <p><a href="<c:url value='/user/index'/>" class="btn btn-primary btn-sm">一覧に戻る</a></p>
         </div>
     </c:param>
 </c:import>

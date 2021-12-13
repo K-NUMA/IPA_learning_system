@@ -23,6 +23,10 @@ import javax.persistence.Table;
           ),
     @NamedQuery(
             name = "checkRegisterdUserId",
+            query = "SELECT u FROM UserList AS u WHERE u.user_id = :user_id"
+          ),
+    @NamedQuery(
+            name = "checkRegisterdUserIdCount",
             query = "SELECT COUNT(u) FROM UserList AS u WHERE u.user_id = :user_id"
           ),
     @NamedQuery(

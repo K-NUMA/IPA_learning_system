@@ -11,20 +11,20 @@
 
 <div class="d-flex flex-column align-items-center bg-success text-white p-2 rounded w-25 mx-auto">
 <div class="form-group mt-2">
-<label for="user_id">ユーザID</label><br />
-<input type="text" name="user_id" value="${user.user_id}" class="form-control"/>
+<label for="user_id">ユーザIDを入力してください</label><br />
+<input type="text" name="user_id" class="form-control"/>
 <br />
 
-<label for="user_name">ユーザ名</label><br />
-<input type="text" name="user_name" value="${user.user_name}" class="form-control"/>
+<label for="user_name">新しいパスワードを入力</label><br />
+<input type="password" name="new_password" class="form-control"/>
 <br />
 
-<label for="password">パスワード</label><br />
-<input type="password" name="password" class="form-control" />
+<label for="password">新しいパスワードを再入力</label><br />
+<input type="password" name="re_enter_password" class="form-control" />
 <br />
 
 <input type="hidden" name="_token" value="${_token}" />
-<button type="submit" class="btn btn-primary">ユーザー登録をする</button>
+<button type="submit" class="btn btn-primary">パスワードを変更する</button>
 
 </div>
 </div>

@@ -31,17 +31,17 @@ public class UserValidator {
         return errors;
     }
 
-    // 社員番号
+    // ユーザー番号
     private static String validateUserId(String user_id,Boolean uidDuplicateCheckFlag){
         // 必須入力チェック
         if(user_id == null || user_id.equals("")){
             return "ユーザーIDを入力してください。";
         }
 
-        // すでに登録されている社員番号との重複チェック
+        // すでに登録されているユーザー番号との重複チェック
         if(uidDuplicateCheckFlag){
             EntityManager em = DBUtil.createEntityManager();
-            long users_count = (long)em.createNamedQuery("checkRegisterdUserId", Long.class)
+            long users_count = (long)em.createNamedQuery("checkRegisterdUserIdCount", Long.class)
                     .setParameter("user_id",user_id)
                     .getSingleResult();
 
@@ -54,7 +54,7 @@ public class UserValidator {
         return "";
     }
 
-    // 社員名の必須入力チェック
+    // ユーザー名の必須入力チェック
     private static String validateUserName(String username){
         if(username == null || username.equals("")){
             return "氏名を入力してください。";

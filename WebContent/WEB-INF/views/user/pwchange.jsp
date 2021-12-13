@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
     <c:param name="pagename">
-            <h1 class="navbar-brand">新規ユーザーの登録</h1>
+            <h1 class="navbar-brand">パスワード変更画面</h1>
     </c:param>
     <c:param name="content">
         <c:if test="${errors != null}">
@@ -14,11 +14,12 @@
             </div>
         </c:if>
 
-        <div  class="d-flex flex-column mt-5 mx-auto">
-        <form method="POST" action="<c:url value='/user/create' />">
-            <c:import url="_user_form.jsp" />
+        <div class="d-flex flex-column mt-5 mx-auto">
+        <form method="POST" action="<c:url value='/psupdate' />">
+            <c:import url="_pwchange_form.jsp" />
         </form>
-        </div>
 
+        <a href="<c:url value='/'/>" class="btn btn-primary btn-sm w-25 mx-auto">トップページへ戻る</a>
+        </div>
     </c:param>
 </c:import>

@@ -7,7 +7,6 @@
     <c:param name="content">
         <c:if test="${flush != null }">
             <div id="flush_seccess">
-                <c:out value="${flush}"/>
             </div>
         </c:if>
         <table id="user_list" class="table mt-5">

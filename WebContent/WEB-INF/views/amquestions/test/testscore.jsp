@@ -175,8 +175,8 @@
             labels: ["正解", "不正解"],
             datasets: [{
                 backgroundColor: [
-                    "#BB5179",
-                    "#FAFF67",
+                    "#00ff00",
+                    "#ff0000",
                 ],
                 data: ["<c:out value="${graphAnsCategory[0]*100}" />", "<c:out value="${100-graphAnsCategory[0]*100}"/>"]
             }]
@@ -196,8 +196,8 @@
             labels: ["正解", "不正解"],
             datasets: [{
                 backgroundColor: [
-                    "#BB5179",
-                    "#FAFF67",
+                    "#00ff00",
+                    "#ff0000",
                 ],
                 data: ["<c:out value="${graphAnsCategory[1]*100}" />", "<c:out value="${100-graphAnsCategory[1]*100}"/>"]
             }]
@@ -217,8 +217,8 @@
             labels: ["正解", "不正解"],
             datasets: [{
                 backgroundColor: [
-                    "#BB5179",
-                    "#FAFF67",
+                    "#00ff00",
+                    "#ff0000",
                 ],
                 data: ["<c:out value="${graphAnsCategory[2]*100}" />", "<c:out value="${100-graphAnsCategory[2]*100}"/>"]
             }]
